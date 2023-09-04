@@ -1,0 +1,32 @@
+﻿muprocdurham
+============
+
+.. automodule:: muprocdurham
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+   muprocdurham.myclass
+
