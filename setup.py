@@ -14,7 +14,7 @@ setuptools.setup(
     description="Python package for the Music Processing lecture and practicals at Durham University",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ComputationalMusicologyDurham/MuProcDurham",
+    url="https://github.com/MusicComputingDurham/MuProcDurham",
     packages=setuptools.find_packages(exclude=['tests']),
     install_requires=install_requires,
     include_package_data=True,
