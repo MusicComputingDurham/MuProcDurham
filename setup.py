@@ -8,7 +8,7 @@ with open("requirements.txt", "r") as fh:
 
 setuptools.setup(
     name="muprocdurham",
-    version="0.0.2",
+    version="0.0.3",
     author="Robert Lieck, Eamonn Bell, Mark Gotham",
     # author_email="",
     description="Python package for the Music Processing lecture and practicals at Durham University",
@@ -23,6 +23,6 @@ setuptools.setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.9",
+    python_requires=">=3.8",
 )
 
