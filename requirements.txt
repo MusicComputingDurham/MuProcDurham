@@ -2,3 +2,5 @@ numpy
 librosa==0.10.1
 libfmp==1.2.5
 ipympl==0.9.3
+music21
+pitchtypes
