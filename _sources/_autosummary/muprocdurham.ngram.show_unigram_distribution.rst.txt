@@ -1,0 +1,6 @@
+muprocdurham.ngram.show\_unigram\_distribution
+==============================================
+
+.. currentmodule:: muprocdurham.ngram
+
+.. autofunction:: show_unigram_distribution

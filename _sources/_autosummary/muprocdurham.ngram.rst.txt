@@ -1,0 +1,32 @@
+muprocdurham.ngram
+==================
+
+.. automodule:: muprocdurham.ngram
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      bigram_matrix_from_model
+      show_bigram_matrix
+      show_unigram_distribution
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

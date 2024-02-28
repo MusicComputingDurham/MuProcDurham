@@ -1,0 +1,6 @@
+muprocdurham.ngram.bigram\_matrix\_from\_model
+==============================================
+
+.. currentmodule:: muprocdurham.ngram
+
+.. autofunction:: bigram_matrix_from_model

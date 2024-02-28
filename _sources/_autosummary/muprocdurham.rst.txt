@@ -29,4 +29,5 @@
    :recursive:
 
    muprocdurham.myclass
+   muprocdurham.ngram
 
