@@ -1,6 +1,11 @@
 # PyCharm
 .idea/**
 
+# documentation
+doc/_autosummary
+doc/_build
+doc/auto_examples
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
