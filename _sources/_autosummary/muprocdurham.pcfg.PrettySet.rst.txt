@@ -1,0 +1,14 @@
+muprocdurham.pcfg.PrettySet
+===========================
+
+.. currentmodule:: muprocdurham.pcfg
+
+.. autoclass:: PrettySet
+   :members:
+   :undoc-members:
+   :special-members:
+   :private-members:
+   :inherited-members:
+   :show-inheritance:
+
+   .. autoclasstoc::

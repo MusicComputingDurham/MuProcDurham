@@ -1,0 +1,14 @@
+muprocdurham.pcfg.DictSetChart
+==============================
+
+.. currentmodule:: muprocdurham.pcfg
+
+.. autoclass:: DictSetChart
+   :members:
+   :undoc-members:
+   :special-members:
+   :private-members:
+   :inherited-members:
+   :show-inheritance:
+
+   .. autoclasstoc::

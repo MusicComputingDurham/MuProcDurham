@@ -1,0 +1,14 @@
+muprocdurham.pcfg.PrettyDict
+============================
+
+.. currentmodule:: muprocdurham.pcfg
+
+.. autoclass:: PrettyDict
+   :members:
+   :undoc-members:
+   :special-members:
+   :private-members:
+   :inherited-members:
+   :show-inheritance:
+
+   .. autoclasstoc::

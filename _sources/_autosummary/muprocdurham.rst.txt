@@ -30,4 +30,5 @@
 
    muprocdurham.myclass
    muprocdurham.ngram
+   muprocdurham.pcfg
 
