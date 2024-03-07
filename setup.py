@@ -8,7 +8,7 @@ with open("requirements.txt", "r") as fh:
 
 setuptools.setup(
     name="muprocdurham",
-    version="0.0.4",
+    version="0.0.5",
     author="Robert Lieck, Eamonn Bell, Mark Gotham",
     # author_email="",
     description="Python package for the Music Processing lecture and practicals at Durham University",
