@@ -75,7 +75,7 @@ def show_bigram_matrix(mat, minmax=None, show_values=False, names=False, pitch_c
                 return str(EnharmonicPitch(x))
         plt.gca().xaxis.set_major_formatter(lambda x, pos: name_func(x))
         plt.gca().yaxis.set_major_formatter(lambda x, pos: name_func(x))
-    plt.colorbar(cm.ScalarMappable(norm=norm))
+    plt.colorbar(cm.ScalarMappable(norm=norm), ax=plt.gca())
     if show:
         plt.show()
 

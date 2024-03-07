@@ -4,3 +4,5 @@ libfmp==1.2.5
 ipympl==0.9.3
 music21
 pitchtypes
+triangularmap
+corpusinterface
