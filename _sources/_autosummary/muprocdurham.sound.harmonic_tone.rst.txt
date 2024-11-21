@@ -1,0 +1,6 @@
+muprocdurham.sound.harmonic\_tone
+=================================
+
+.. currentmodule:: muprocdurham.sound
+
+.. autofunction:: harmonic_tone

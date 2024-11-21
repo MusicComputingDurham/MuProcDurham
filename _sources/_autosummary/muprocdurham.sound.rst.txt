@@ -1,0 +1,38 @@
+muprocdurham.sound
+==================
+
+.. automodule:: muprocdurham.sound
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      audio
+      fade_wave
+      harmonic_tone
+      load
+      normalise_wave
+      render
+      save
+      sound
+      spectrogram
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

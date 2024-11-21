@@ -1,0 +1,6 @@
+muprocdurham.sound.render
+=========================
+
+.. currentmodule:: muprocdurham.sound
+
+.. autofunction:: render

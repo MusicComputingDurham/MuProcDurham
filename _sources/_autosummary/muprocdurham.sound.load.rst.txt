@@ -1,0 +1,6 @@
+muprocdurham.sound.load
+=======================
+
+.. currentmodule:: muprocdurham.sound
+
+.. autofunction:: load

@@ -1,0 +1,6 @@
+muprocdurham.sound.fade\_wave
+=============================
+
+.. currentmodule:: muprocdurham.sound
+
+.. autofunction:: fade_wave

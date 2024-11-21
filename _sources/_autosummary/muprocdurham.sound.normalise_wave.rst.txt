@@ -1,0 +1,6 @@
+muprocdurham.sound.normalise\_wave
+==================================
+
+.. currentmodule:: muprocdurham.sound
+
+.. autofunction:: normalise_wave

@@ -28,7 +28,8 @@
    :template: custom-module-template.rst
    :recursive:
 
-   muprocdurham.myclass
-   muprocdurham.ngram
-   muprocdurham.pcfg
+   myclass
+   ngram
+   pcfg
+   sound
 

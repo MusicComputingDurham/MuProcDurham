@@ -1,0 +1,6 @@
+muprocdurham.sound.spectrogram
+==============================
+
+.. currentmodule:: muprocdurham.sound
+
+.. autofunction:: spectrogram
