@@ -510,7 +510,7 @@ for p in melody:
     n.quarterLength = 1/4
     stream.append(n)
 
-stream.show()
+# stream.show()
 m21.midi.realtime.StreamPlayer(stream).play()
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -602,7 +602,7 @@ rhythm = get_rhythm(4)
 print([Enharmonic.Pitch(i) for i in melody])
 print(rhythm)
 rhythm_and_melody(rhythm=rhythm, melody=melody)
-rhythm_and_melody(rhythm=rhythm, melody=melody, use_m21=True)
+# rhythm_and_melody(rhythm=rhythm, melody=melody, use_m21=True)
 
 
 # ## Random Melody
