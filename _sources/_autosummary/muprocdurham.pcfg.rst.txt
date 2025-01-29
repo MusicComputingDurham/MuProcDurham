@@ -9,6 +9,13 @@ muprocdurham.pcfg
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      cat_pretty
+   
    
 
    

@@ -1,0 +1,6 @@
+muprocdurham.jupyter.no\_linebreaks
+===================================
+
+.. currentmodule:: muprocdurham.jupyter
+
+.. autofunction:: no_linebreaks

@@ -1,0 +1,30 @@
+muprocdurham.jupyter
+====================
+
+.. automodule:: muprocdurham.jupyter
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      no_linebreaks
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

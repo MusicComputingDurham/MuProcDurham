@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>muprocdurham.ngram &mdash; muprocdurham  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
@@ -75,16 +75,16 @@
            <div itemprop="articleBody">
              
   <h1>Source code for muprocdurham.ngram</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">cm</span>
 
-<span class="kn">from</span> <span class="nn">pitchtypes</span> <span class="kn">import</span> <span class="n">EnharmonicPitchClass</span><span class="p">,</span> <span class="n">EnharmonicPitch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pitchtypes</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnharmonicPitchClass</span><span class="p">,</span> <span class="n">EnharmonicPitch</span>
 
 
 <div class="viewcode-block" id="bigram_matrix_from_model">
 <a class="viewcode-back" href="../../_autosummary/muprocdurham.ngram.bigram_matrix_from_model.html#muprocdurham.ngram.bigram_matrix_from_model">[docs]</a>
-<span class="k">def</span> <span class="nf">bigram_matrix_from_model</span><span class="p">(</span><span class="n">n_gram_model</span><span class="p">,</span> <span class="n">counts</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bigram_matrix_from_model</span><span class="p">(</span><span class="n">n_gram_model</span><span class="p">,</span> <span class="n">counts</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">min_val</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">n_gram_model</span><span class="o">.</span><span class="n">alphabet</span><span class="p">)</span>
     <span class="n">max_val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">n_gram_model</span><span class="o">.</span><span class="n">alphabet</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">max_val</span> <span class="o">-</span> <span class="n">min_val</span> <span class="o">+</span> <span class="mi">1</span>
@@ -104,7 +104,7 @@
 
 <div class="viewcode-block" id="show_bigram_matrix">
 <a class="viewcode-back" href="../../_autosummary/muprocdurham.ngram.show_bigram_matrix.html#muprocdurham.ngram.show_bigram_matrix">[docs]</a>
-<span class="k">def</span> <span class="nf">show_bigram_matrix</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_values</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pitch_classes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_bigram_matrix</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_values</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pitch_classes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                        <span class="n">key_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">black_key_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="k">assert</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;Bigram matrix must be square, but has shape </span><span class="si">{</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">mat</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;Values in &#39;mat&#39; must be non-negative&quot;</span>
@@ -150,10 +150,10 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;to&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">names</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">pitch_classes</span><span class="p">:</span>
-            <span class="k">def</span> <span class="nf">name_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">name_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
                 <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">EnharmonicPitchClass</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">def</span> <span class="nf">name_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">name_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
                 <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">EnharmonicPitch</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="n">name_func</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="n">name_func</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -165,7 +165,7 @@
 
 <div class="viewcode-block" id="show_unigram_distribution">
 <a class="viewcode-back" href="../../_autosummary/muprocdurham.ngram.show_unigram_distribution.html#muprocdurham.ngram.show_unigram_distribution">[docs]</a>
-<span class="k">def</span> <span class="nf">show_unigram_distribution</span><span class="p">(</span><span class="n">n_gram_model</span><span class="p">,</span> <span class="n">counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pitch_classes</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_unigram_distribution</span><span class="p">(</span><span class="n">n_gram_model</span><span class="p">,</span> <span class="n">counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pitch_classes</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_gram_model</span><span class="o">.</span><span class="n">alphabet</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
     <span class="n">alphabet</span> <span class="o">=</span> <span class="n">n_gram_model</span><span class="o">.</span><span class="n">alphabet</span>

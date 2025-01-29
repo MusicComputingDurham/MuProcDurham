@@ -28,7 +28,7 @@
    :template: custom-module-template.rst
    :recursive:
 
-   myclass
+   jupyter
    ngram
    pcfg
    sound

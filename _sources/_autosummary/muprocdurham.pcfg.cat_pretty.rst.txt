@@ -1,0 +1,6 @@
+muprocdurham.pcfg.cat\_pretty
+=============================
+
+.. currentmodule:: muprocdurham.pcfg
+
+.. autofunction:: cat_pretty

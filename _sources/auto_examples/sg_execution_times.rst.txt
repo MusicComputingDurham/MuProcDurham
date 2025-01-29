@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.002** total execution time for 1 file **from auto_examples**:
+**01:15.309** total execution time for 5 files **from auto_examples**:
 
 .. container::
 
@@ -32,6 +32,18 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_auto_examples_plot_example.py` (``plot_example.py``)
-     - 00:00.002
+   * - :ref:`sphx_glr_auto_examples_Lecture_From_Overtones_to_Tuning_Systems_and_Harmonies.py` (``Lecture_From_Overtones_to_Tuning_Systems_and_Harmonies.py``)
+     - 00:37.187
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_Practical_Shepard_Tones_and_Pitch-Class_Embeddings.py` (``Practical_Shepard_Tones_and_Pitch-Class_Embeddings.py``)
+     - 00:30.045
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_Practical_Tonnetz_Generation.py` (``Practical_Tonnetz_Generation.py``)
+     - 00:03.199
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_Practical_Hierarchical_Models.py` (``Practical_Hierarchical_Models.py``)
+     - 00:02.696
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_Practical_Sequential_Models.py` (``Practical_Sequential_Models.py``)
+     - 00:02.182
      - 0.0

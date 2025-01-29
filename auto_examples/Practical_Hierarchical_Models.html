@@ -1,0 +1,945 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practical: Hierarchical Models &mdash; muprocdurham  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/autoclasstoc.css?v=08871587" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Shepard Tones" href="Practical_Shepard_Tones_and_Pitch-Class_Embeddings.html" />
+    <link rel="prev" title="Practical: Sequential Models" href="Practical_Sequential_Models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            muprocdurham
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">MuProcDurham Gallery</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Lecture_From_Overtones_to_Tuning_Systems_and_Harmonies.html">Spectrograms &amp; Overtones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Practical_Sequential_Models.html">Practical: Sequential Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Practical: Hierarchical Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exercise">Exercise:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Exercise:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Exercise:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-annotated-beethoven-corpus-abc-https-github-com-dcmlab-abc">[The Annotated Beethoven Corpus (ABC)](https://github.com/DCMLab/ABC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Exercise:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Practical_Shepard_Tones_and_Pitch-Class_Embeddings.html">Shepard Tones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Practical_Tonnetz_Generation.html">Tonnetz Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_summary.html">API Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">muprocdurham</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">MuProcDurham Gallery</a></li>
+      <li class="breadcrumb-item active">Practical: Hierarchical Models</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-practical-hierarchical-models-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="practical-hierarchical-models">
+<span id="sphx-glr-auto-examples-practical-hierarchical-models-py"></span><h1>Practical: Hierarchical Models<a class="headerlink" href="#practical-hierarchical-models" title="Link to this heading"></a></h1>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In[ ]:</span>
+
+
+<span class="c1"># !pip install muprocdurham  # latest release</span>
+<span class="c1"># !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@main  # latest main version (typically same as release)</span>
+<span class="c1"># !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@dev  # latest dev version</span>
+
+
+<span class="c1"># # Practical: Hierarchical Models</span>
+
+<span class="c1"># ## Working with Charts</span>
+
+<span class="c1"># Familiarise yourself with the following two types of charts that are useful for parsing CFGs.</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">muprocdurham.pcfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">SetChart</span><span class="p">,</span> <span class="n">DictSetChart</span><span class="p">,</span> <span class="n">cat_pretty</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">muprocdurham.jupyter</span><span class="w"> </span><span class="kn">import</span> <span class="n">no_linebreaks</span>
+<span class="n">no_linebreaks</span><span class="p">()</span>
+
+
+<span class="c1"># ### SetChart</span>
+
+<span class="c1"># A ``SetChart`` stores sets of elements/symbols in each cell. You can initialise and print it like this:</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">SetChart</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chart</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">haxis</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+
+<span class="c1"># You can access a cell via ``chart[start, end]``, where ``start`` and ``end`` are the index of the left and right boundary of the sub-chart (&quot;triangle&quot;) of which the corresponding cell is the top. The following simply adds the ``(start, end)`` pairs to each cell to give you an overview of the indexing.</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>     ╱╲
+    ╱ ∅╲
+   ╱╲  ╱╲
+  ╱ ∅╲╱ ∅╲
+ ╱╲  ╱╲  ╱╲
+╱ ∅╲╱ ∅╲╱ ∅╲
+│   │   │   │
+0   1   2   3
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">chart</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">end</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">chart</span><span class="o">.</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">chart</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chart</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">haxis</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>              ╱╲
+             ╱  ╲
+            ╱    ╲
+           ╱      ╲
+          ╱{(0, 3)}╲
+         ╱╲        ╱╲
+        ╱  ╲      ╱  ╲
+       ╱    ╲    ╱    ╲
+      ╱      ╲  ╱      ╲
+     ╱{(0, 2)}╲╱{(1, 3)}╲
+    ╱╲        ╱╲        ╱╲
+   ╱  ╲      ╱  ╲      ╱  ╲
+  ╱    ╲    ╱    ╲    ╱    ╲
+ ╱      ╲  ╱      ╲  ╱      ╲
+╱{(0, 1)}╲╱{(1, 2)}╲╱{(2, 3)}╲
+│         │         │         │
+0         1         2         3
+</pre></div>
+</div>
+<section id="exercise">
+<h2>Exercise:<a class="headerlink" href="#exercise" title="Link to this heading"></a></h2>
+<p>Add the symbol ‘A’ to the very top cell, the symbol ‘B’ to the center bottom cell, the symbol ‘C’ to the cell spanning from 1 to 3, and finally a second symbol ‘D’ to the very top cell.</p>
+<p><em>Hint:</em> <code class="docutils literal notranslate"><span class="pre">chart[start,</span> <span class="pre">end]</span></code> gives you access to the corresponding <code class="docutils literal notranslate"><span class="pre">set</span></code> in that cell, which you can then manipulate.</p>
+<p>Your result should look as below.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">SetChart</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># vvvvvvvvvvvvvvvvvv</span>
+<span class="c1"># FILL HERE</span>
+<span class="n">chart</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">chart</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<span class="n">chart</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="n">chart</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+<span class="c1"># ^^^^^^^^^^^^^^^^^^</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chart</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">haxis</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+
+<span class="c1"># Finally, to help with orientation, you can also print the level, which corresponds to the length of the *span* (the corresponding subsequence) associated to the cells.</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>           ╱╲
+          ╱  ╲
+         ╱    ╲
+        ╱ {D,A}╲
+       ╱╲      ╱╲
+      ╱  ╲    ╱  ╲
+     ╱    ╲  ╱    ╲
+    ╱     ∅╲╱   {C}╲
+   ╱╲      ╱╲      ╱╲
+  ╱  ╲    ╱  ╲    ╱  ╲
+ ╱    ╲  ╱    ╲  ╱    ╲
+╱     ∅╲╱   {B}╲╱     ∅╲
+│       │       │       │
+0       1       2       3
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chart</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">haxis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">laxis</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+
+<span class="c1"># ### DictSetChart</span>
+
+<span class="c1"># A ``DictSetChart`` is similar to a ``SetChart``, just that is stores a *dictionary* of sets in each cell. This means that you can store a set of values along with each of the symbols.</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>           ╱╲            level
+          ╱  ╲
+         ╱    ╲
+        ╱ {D,A}╲         3
+       ╱╲      ╱╲
+      ╱  ╲    ╱  ╲
+     ╱    ╲  ╱    ╲
+    ╱     ∅╲╱   {C}╲     2
+   ╱╲      ╱╲      ╱╲
+  ╱  ╲    ╱  ╲    ╱  ╲
+ ╱    ╲  ╱    ╲  ╱    ╲
+╱     ∅╲╱   {B}╲╱     ∅╲ 1
+│       │       │       │
+0       1       2       3
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h2>Exercise:<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>In the top cell, add the values <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span></code> to the symbol ‘A’ and the value <code class="docutils literal notranslate"><span class="pre">3</span></code> to the symbol ‘B’.</p>
+<p><em>Hint:</em> <code class="docutils literal notranslate"><span class="pre">chart[start,</span> <span class="pre">end]</span></code> gives you access to a <code class="docutils literal notranslate"><span class="pre">dict</span></code> of <a href="#id2"><span class="problematic" id="id3">``</span></a>set``s in that cell, which you can then manipulate.</p>
+<p>Your result should look as below.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">DictSetChart</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># vvvvvvvvvvvvvvvvvvvvv</span>
+<span class="c1"># FILL HERE</span>
+<span class="n">chart</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">chart</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">chart</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">][</span><span class="s1">&#39;B&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># ^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chart</span><span class="o">.</span><span class="n">pretty</span><span class="p">())</span>
+
+
+<span class="c1"># ## CYK Parsing</span>
+
+<span class="c1"># ### Simple CYK Parser</span>
+
+<span class="c1"># We are now equipped for implementing a CYK parser for a context-free grammar (CFG). Below is a template class, which you can complete using the pseudocode from the lecture slides.</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                 ╱╲
+                ╱  ╲
+               ╱    ╲
+              ╱      ╲
+             ╱        ╲
+            ╱          ╲
+           ╱            ╲
+          ╱              ╲
+         ╱ {A:{1,2},B:{3}}╲
+        ╱╲                ╱╲
+       ╱  ╲              ╱  ╲
+      ╱    ╲            ╱    ╲
+     ╱      ╲          ╱      ╲
+    ╱        ╲        ╱        ╲
+   ╱          ╲      ╱          ╲
+  ╱            ╲    ╱            ╲
+ ╱              ╲  ╱              ╲
+╱              {}╲╱              {}╲
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CFG</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">non_terminal_rules</span><span class="p">,</span> <span class="n">terminal_rules</span><span class="p">,</span> <span class="n">start_symbol</span><span class="p">):</span>
+
+        <span class="c1"># store the non-terminal rules as triples: A --&gt; B C is stored as (&#39;A&#39;, &#39;B&#39;, &#39;C&#39;)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">non_terminal_rules</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">non_terminal_rules</span><span class="p">)</span>
+        <span class="c1"># store the terminal rules as pairs: A --&gt; a is stored as (&#39;A&#39;, &#39;a&#39;)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminal_rules</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">terminal_rules</span><span class="p">)</span>
+        <span class="c1"># the start symbol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_symbol</span> <span class="o">=</span> <span class="n">start_symbol</span>
+
+        <span class="c1"># the chart is initialised by the init_chart() function called by the parse() function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chart</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># extracting the non-terminal and terminal symbols from the rules</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">non_terminal_symbols</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="p">[{</span><span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">}</span> <span class="k">for</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_terminal_rules</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminal_symbols</span> <span class="o">=</span> <span class="p">{</span><span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal_rules</span><span class="p">}</span>
+        <span class="c1"># make sure the start symbol is in the set of non-terminal symbols</span>
+        <span class="k">assert</span> <span class="n">start_symbol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_terminal_symbols</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Start symbol &#39;</span><span class="si">{</span><span class="n">start_symbol</span><span class="si">}</span><span class="s2">&#39; must be in non-terminals&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_chart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="c1"># Override this function for using other chart types</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chart</span> <span class="o">=</span> <span class="n">SetChart</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sequence</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_chart</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+        <span class="c1"># fill bottom row using terminal rules</span>
+        <span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
+        <span class="c1"># FILL HERE</span>
+        <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">terminal_symbol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sequence</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fill_terminal_cell</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">terminal_symbol</span><span class="p">)</span>
+        <span class="c1"># ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+
+        <span class="c1"># fill rows, bottom up, using non-terminal rules</span>
+        <span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
+        <span class="c1"># FILL HERE</span>
+        <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># length of sub-sequence</span>
+            <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">split</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="n">level</span><span class="p">):</span>
+                    <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">level</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">fill_non_terminal_cell</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">split</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+        <span class="c1"># ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+
+        <span class="c1"># return whether the sequence is valid (i.e. whether the start symbol is in the top cell)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_symbol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fill_terminal_cell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
+        <span class="c1"># go through all terminal rules to fill cell</span>
+        <span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
+        <span class="c1"># FILL HERE</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal_rules</span><span class="p">:</span>
+            <span class="c1"># if right hand side (terminal) matches, add left hand side (non-terminal) to cell</span>
+            <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">symbol</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fill_non_terminal_cell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">split</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="c1"># go through all non-terminal rules to fill cell</span>
+        <span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
+        <span class="c1"># FILL HERE</span>
+        <span class="k">for</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_terminal_rules</span><span class="p">:</span>
+            <span class="c1"># if symbols on right hand side are in the corresponding cells,</span>
+            <span class="c1"># add left hand side to parent cell</span>
+            <span class="k">if</span> <span class="n">x2</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">split</span><span class="p">]</span> <span class="ow">and</span> <span class="n">x3</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="p">[</span><span class="n">split</span><span class="p">,</span> <span class="n">end</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+        <span class="c1"># ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+
+
+<span class="c1"># Test your implementation using the minimal example from the lecture.</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">CFG</span><span class="p">(</span>
+    <span class="n">non_terminal_rules</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">)],</span>
+    <span class="n">terminal_rules</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)],</span>
+    <span class="n">start_symbol</span><span class="o">=</span><span class="s1">&#39;A&#39;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;non-terminal rules:&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">non_terminal_rules</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;terminal rules:&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">terminal_rules</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;start symbol:&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">start_symbol</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;non-terminal symbols:&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">non_terminal_symbols</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;terminal symbols:&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">terminal_symbols</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;valid sequence:&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;aabba&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">chart</span><span class="o">.</span><span class="n">pretty</span><span class="p">())</span>
+
+
+<span class="c1"># ### Getting Parse Trees</span>
+
+<span class="c1"># We can now extend our implementation to also remember splitting points, so we can later reconstruct all possible parse trees.</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>non-terminal rules: {(&#39;A&#39;, &#39;A&#39;, &#39;A&#39;), (&#39;A&#39;, &#39;B&#39;, &#39;A&#39;)}
+terminal rules: {(&#39;A&#39;, &#39;a&#39;), (&#39;B&#39;, &#39;b&#39;)}
+start symbol: A
+non-terminal symbols: {&#39;A&#39;, &#39;B&#39;}
+terminal symbols: {&#39;b&#39;, &#39;a&#39;}
+valid sequence: True
+              ╱╲
+             ╱  ╲
+            ╱ {A}╲
+           ╱╲    ╱╲
+          ╱  ╲  ╱  ╲
+         ╱   ∅╲╱ {A}╲
+        ╱╲    ╱╲    ╱╲
+       ╱  ╲  ╱  ╲  ╱  ╲
+      ╱   ∅╲╱   ∅╲╱ {A}╲
+     ╱╲    ╱╲    ╱╲    ╱╲
+    ╱  ╲  ╱  ╲  ╱  ╲  ╱  ╲
+   ╱ {A}╲╱   ∅╲╱   ∅╲╱ {A}╲
+  ╱╲    ╱╲    ╱╲    ╱╲    ╱╲
+ ╱  ╲  ╱  ╲  ╱  ╲  ╱  ╲  ╱  ╲
+╱ {A}╲╱ {A}╲╱ {B}╲╱ {B}╲╱ {A}╲
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>Exercise:<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>Override the <code class="docutils literal notranslate"><span class="pre">fill_terminal_cell</span></code> and <code class="docutils literal notranslate"><span class="pre">fill_non_terminal_cell</span></code> functions to remember possible splitting points for each symbol.</p>
+<p><em>Hint:</em> You can call <code class="docutils literal notranslate"><span class="pre">chart[start,</span> <span class="pre">end][x]</span></code> to add symbol <code class="docutils literal notranslate"><span class="pre">x</span></code> to a cell but leave the set of splitting points empty (e.g. for level 1 at the bottom of the chart).</p>
+<p>%%
+Exercise (HARD):
+—————-</p>
+<p>Implement a <code class="docutils literal notranslate"><span class="pre">get_trees</span></code> method that uses the stored splitting points to compute all possible parse trees.</p>
+<p><em>Hints:</em>
+- If two trees have the same shape but different symbols in their inner nodes, they correspond to different parse trees.
+- You can represent a tree with a <code class="docutils literal notranslate"><span class="pre">SetChart</span></code> that only contains the symbols that appear in the tree.
+- Start from the top and construct trees recursively (for any possible split, any combination of a right sub-tree and a left sub-tree is a valid tree).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TreeCFG</span><span class="p">(</span><span class="n">CFG</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_chart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="c1"># chart stores dicts from symbols to sets of possible splitting points</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chart</span> <span class="o">=</span> <span class="n">DictSetChart</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fill_terminal_cell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
+        <span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
+        <span class="c1"># FILL HERE</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal_rules</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">symbol</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span>
+        <span class="c1"># ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fill_non_terminal_cell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">split</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
+        <span class="c1"># FILL HERE</span>
+        <span class="k">for</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_terminal_rules</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">x2</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">split</span><span class="p">]</span> <span class="ow">and</span> <span class="n">x3</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="p">[</span><span class="n">split</span><span class="p">,</span> <span class="n">end</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">][</span><span class="n">x1</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">split</span><span class="p">))</span>
+        <span class="c1"># ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_trees</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">chart</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">draw_tree</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">trees</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># list of all possible trees represented in charts</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="o">.</span><span class="n">n</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">chart</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">chart</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_symbol</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">SetChart</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+
+        <span class="c1"># handle terminal transitions</span>
+        <span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
+        <span class="c1"># FILL HERE</span>
+        <span class="k">if</span> <span class="n">end</span> <span class="o">==</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># make a copy and fill in current symbol</span>
+            <span class="n">chart_copy</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">chart_copy</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+            <span class="n">trees</span> <span class="o">+=</span> <span class="p">[</span><span class="n">chart_copy</span><span class="p">]</span>
+        <span class="c1"># ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+
+        <span class="c1"># go through all possible splitting points and the associated symbols</span>
+        <span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
+        <span class="c1"># FILL HERE</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">left_child</span><span class="p">,</span> <span class="n">right_child</span><span class="p">,</span> <span class="n">split</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">][</span><span class="n">symbol</span><span class="p">]:</span>
+                <span class="c1"># make a copy and fill in current symbol</span>
+                <span class="n">chart_copy</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">chart_copy</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+                <span class="c1"># fill in tree branches (only to make printing more pretty)</span>
+                <span class="k">if</span> <span class="n">draw_tree</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">tree_end</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">split</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+                        <span class="n">chart_copy</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">tree_end</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;╱&#39;</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">tree_start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">split</span><span class="p">):</span>
+                        <span class="n">chart_copy</span><span class="p">[</span><span class="n">tree_start</span><span class="p">,</span> <span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;╲&#39;</span><span class="p">)</span>
+                <span class="c1"># get sub-trees from left child (start from prefilled chart)</span>
+                <span class="n">left_trees</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_trees</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="n">left_child</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">split</span><span class="p">,</span> <span class="n">chart</span><span class="o">=</span><span class="n">chart_copy</span><span class="p">,</span> <span class="n">draw_tree</span><span class="o">=</span><span class="n">draw_tree</span><span class="p">)</span>
+                <span class="c1"># for all possible left trees get sub-trees from right child</span>
+                <span class="k">for</span> <span class="n">new_tree</span> <span class="ow">in</span> <span class="n">left_trees</span><span class="p">:</span>
+                    <span class="c1"># the left sub-tree is already filled in; not add the possible sub-trees from right child</span>
+                    <span class="n">full_trees</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_trees</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="n">right_child</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">split</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">chart</span><span class="o">=</span><span class="n">new_tree</span><span class="p">,</span> <span class="n">draw_tree</span><span class="o">=</span><span class="n">draw_tree</span><span class="p">)</span>
+                    <span class="c1"># each combination is a valid (sub-)tree for the parent</span>
+                    <span class="n">trees</span> <span class="o">+=</span> <span class="n">full_trees</span>
+        <span class="c1"># ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+        <span class="k">return</span> <span class="n">trees</span>
+
+
+<span class="c1"># Test your implementation again on the (slightly extended) minimal example.</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">TreeCFG</span><span class="p">(</span>
+    <span class="n">non_terminal_rules</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">terminal_rules</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span>
+    <span class="p">],</span>
+    <span class="n">start_symbol</span><span class="o">=</span><span class="s1">&#39;A&#39;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;valid sequence:&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;aabba&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">chart</span><span class="o">.</span><span class="n">pretty</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>valid sequence: True
+                                                                                                                                                                                                                                               ╱╲
+                                                                                                                                                                                                                                              ╱  ╲
+                                                                                                                                                                                                                                             ╱    ╲
+                                                                                                                                                                                                                                            ╱      ╲
+                                                                                                                                                                                                                                           ╱        ╲
+                                                                                                                                                                                                                                          ╱          ╲
+                                                                                                                                                                                                                                         ╱            ╲
+                                                                                                                                                                                                                                        ╱              ╲
+                                                                                                                                                                                                                                       ╱                ╲
+                                                                                                                                                                                                                                      ╱                  ╲
+                                                                                                                                                                                                                                     ╱                    ╲
+                                                                                                                                                                                                                                    ╱                      ╲
+                                                                                                                                                                                                                                   ╱                        ╲
+                                                                                                                                                                                                                                  ╱                          ╲
+                                                                                                                                                                                                                                 ╱                            ╲
+                                                                                                                                                                                                                                ╱                              ╲
+                                                                                                                                                                                                                               ╱                                ╲
+                                                                                                                                                                                                                              ╱                                  ╲
+                                                                                                                                                                                                                             ╱                                    ╲
+                                                                                                                                                                                                                            ╱                                      ╲
+                                                                                                                                                                                                                           ╱                                        ╲
+                                                                                                                                                                                                                          ╱                                          ╲
+                                                                                                                                                                                                                         ╱                                            ╲
+                                                                                                                                                                                                                        ╱                                              ╲
+                                                                                                                                                                                                                       ╱                                                ╲
+                                                                                                                                                                                                                      ╱                                                  ╲
+                                                                                                                                                                                                                     ╱                                                    ╲
+                                                                                                                                                                                                                    ╱                                                      ╲
+                                                                                                                                                                                                                   ╱                                                        ╲
+                                                                                                                                                                                                                  ╱                                                          ╲
+                                                                                                                                                                                                                 ╱                                                            ╲
+                                                                                                                                                                                                                ╱                                                              ╲
+                                                                                                                                                                                                               ╱                                                                ╲
+                                                                                                                                                                                                              ╱                                                                  ╲
+                                                                                                                                                                                                             ╱                                                                    ╲
+                                                                                                                                                                                                            ╱                                                                      ╲
+                                                                                                                                                                                                           ╱                                                                        ╲
+                                                                                                                                                                                                          ╱                                                                          ╲
+                                                                                                                                                                                                         ╱                                                                            ╲
+                                                                                                                                                                                                        ╱                                                                              ╲
+                                                                                                                                                                                                       ╱                                                                                ╲
+                                                                                                                                                                                                      ╱                                                                                  ╲
+                                                                                                                                                                                                     ╱                                                                                    ╲
+                                                                                                                                                                                                    ╱                                                                                      ╲
+                                                                                                                                                                                                   ╱                                                                                        ╲
+                                                                                                                                                                                                  ╱                                                                                          ╲
+                                                                                                                                                                                                 ╱                                                                                            ╲
+                                                                                                                                                                                                ╱ {A:{(&#39;A&#39;, &#39;A&#39;, 1),(&#39;A&#39;, &#39;A&#39;, 2),(&#39;C&#39;, &#39;C&#39;, 2)},C:{(&#39;A&#39;, &#39;A&#39;, 1),(&#39;A&#39;, &#39;A&#39;, 2),(&#39;C&#39;, &#39;C&#39;, 2)}}╲
+                                                                                                                                                                                               ╱╲                                                                                              ╱╲
+                                                                                                                                                                                              ╱  ╲                                                                                            ╱  ╲
+                                                                                                                                                                                             ╱    ╲                                                                                          ╱    ╲
+                                                                                                                                                                                            ╱      ╲                                                                                        ╱      ╲
+                                                                                                                                                                                           ╱        ╲                                                                                      ╱        ╲
+                                                                                                                                                                                          ╱          ╲                                                                                    ╱          ╲
+                                                                                                                                                                                         ╱            ╲                                                                                  ╱            ╲
+                                                                                                                                                                                        ╱              ╲                                                                                ╱              ╲
+                                                                                                                                                                                       ╱                ╲                                                                              ╱                ╲
+                                                                                                                                                                                      ╱                  ╲                                                                            ╱                  ╲
+                                                                                                                                                                                     ╱                    ╲                                                                          ╱                    ╲
+                                                                                                                                                                                    ╱                      ╲                                                                        ╱                      ╲
+                                                                                                                                                                                   ╱                        ╲                                                                      ╱                        ╲
+                                                                                                                                                                                  ╱                          ╲                                                                    ╱                          ╲
+                                                                                                                                                                                 ╱                            ╲                                                                  ╱                            ╲
+                                                                                                                                                                                ╱                              ╲                                                                ╱                              ╲
+                                                                                                                                                                               ╱                                ╲                                                              ╱                                ╲
+                                                                                                                                                                              ╱                                  ╲                                                            ╱                                  ╲
+                                                                                                                                                                             ╱                                    ╲                                                          ╱                                    ╲
+                                                                                                                                                                            ╱                                      ╲                                                        ╱                                      ╲
+                                                                                                                                                                           ╱                                        ╲                                                      ╱                                        ╲
+                                                                                                                                                                          ╱                                          ╲                                                    ╱                                          ╲
+                                                                                                                                                                         ╱                                            ╲                                                  ╱                                            ╲
+                                                                                                                                                                        ╱                                              ╲                                                ╱                                              ╲
+                                                                                                                                                                       ╱                                                ╲                                              ╱                                                ╲
+                                                                                                                                                                      ╱                                                  ╲                                            ╱                                                  ╲
+                                                                                                                                                                     ╱                                                    ╲                                          ╱                                                    ╲
+                                                                                                                                                                    ╱                                                      ╲                                        ╱                                                      ╲
+                                                                                                                                                                   ╱                                                        ╲                                      ╱                                                        ╲
+                                                                                                                                                                  ╱                                                          ╲                                    ╱                                                          ╲
+                                                                                                                                                                 ╱                                                            ╲                                  ╱                                                            ╲
+                                                                                                                                                                ╱                                                              ╲                                ╱                                                              ╲
+                                                                                                                                                               ╱                                                                ╲                              ╱                                                                ╲
+                                                                                                                                                              ╱                                                                  ╲                            ╱                                                                  ╲
+                                                                                                                                                             ╱                                                                    ╲                          ╱                                                                    ╲
+                                                                                                                                                            ╱                                                                      ╲                        ╱                                                                      ╲
+                                                                                                                                                           ╱                                                                        ╲                      ╱                                                                        ╲
+                                                                                                                                                          ╱                                                                          ╲                    ╱                                                                          ╲
+                                                                                                                                                         ╱                                                                            ╲                  ╱                                                                            ╲
+                                                                                                                                                        ╱                                                                              ╲                ╱                                                                              ╲
+                                                                                                                                                       ╱                                                                                ╲              ╱                                                                                ╲
+                                                                                                                                                      ╱                                                                                  ╲            ╱                                                                                  ╲
+                                                                                                                                                     ╱                                                                                    ╲          ╱                                                                                    ╲
+                                                                                                                                                    ╱                                                                                      ╲        ╱                                                                                      ╲
+                                                                                                                                                   ╱                                                                                        ╲      ╱                                                                                        ╲
+                                                                                                                                                  ╱                                                                                          ╲    ╱                                                                                          ╲
+                                                                                                                                                 ╱                                                                                            ╲  ╱                                                                                            ╲
+                                                                                                                                                ╱                                                                                            {}╲╱                                                         {A:{(&#39;A&#39;, &#39;A&#39;, 2)},C:{(&#39;A&#39;, &#39;A&#39;, 2)}}╲
+                                                                                                                                               ╱╲                                                                                              ╱╲                                                                                              ╱╲
+                                                                                                                                              ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲
+                                                                                                                                             ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲
+                                                                                                                                            ╱      ╲                                                                                        ╱      ╲                                                                                        ╱      ╲
+                                                                                                                                           ╱        ╲                                                                                      ╱        ╲                                                                                      ╱        ╲
+                                                                                                                                          ╱          ╲                                                                                    ╱          ╲                                                                                    ╱          ╲
+                                                                                                                                         ╱            ╲                                                                                  ╱            ╲                                                                                  ╱            ╲
+                                                                                                                                        ╱              ╲                                                                                ╱              ╲                                                                                ╱              ╲
+                                                                                                                                       ╱                ╲                                                                              ╱                ╲                                                                              ╱                ╲
+                                                                                                                                      ╱                  ╲                                                                            ╱                  ╲                                                                            ╱                  ╲
+                                                                                                                                     ╱                    ╲                                                                          ╱                    ╲                                                                          ╱                    ╲
+                                                                                                                                    ╱                      ╲                                                                        ╱                      ╲                                                                        ╱                      ╲
+                                                                                                                                   ╱                        ╲                                                                      ╱                        ╲                                                                      ╱                        ╲
+                                                                                                                                  ╱                          ╲                                                                    ╱                          ╲                                                                    ╱                          ╲
+                                                                                                                                 ╱                            ╲                                                                  ╱                            ╲                                                                  ╱                            ╲
+                                                                                                                                ╱                              ╲                                                                ╱                              ╲                                                                ╱                              ╲
+                                                                                                                               ╱                                ╲                                                              ╱                                ╲                                                              ╱                                ╲
+                                                                                                                              ╱                                  ╲                                                            ╱                                  ╲                                                            ╱                                  ╲
+                                                                                                                             ╱                                    ╲                                                          ╱                                    ╲                                                          ╱                                    ╲
+                                                                                                                            ╱                                      ╲                                                        ╱                                      ╲                                                        ╱                                      ╲
+                                                                                                                           ╱                                        ╲                                                      ╱                                        ╲                                                      ╱                                        ╲
+                                                                                                                          ╱                                          ╲                                                    ╱                                          ╲                                                    ╱                                          ╲
+                                                                                                                         ╱                                            ╲                                                  ╱                                            ╲                                                  ╱                                            ╲
+                                                                                                                        ╱                                              ╲                                                ╱                                              ╲                                                ╱                                              ╲
+                                                                                                                       ╱                                                ╲                                              ╱                                                ╲                                              ╱                                                ╲
+                                                                                                                      ╱                                                  ╲                                            ╱                                                  ╲                                            ╱                                                  ╲
+                                                                                                                     ╱                                                    ╲                                          ╱                                                    ╲                                          ╱                                                    ╲
+                                                                                                                    ╱                                                      ╲                                        ╱                                                      ╲                                        ╱                                                      ╲
+                                                                                                                   ╱                                                        ╲                                      ╱                                                        ╲                                      ╱                                                        ╲
+                                                                                                                  ╱                                                          ╲                                    ╱                                                          ╲                                    ╱                                                          ╲
+                                                                                                                 ╱                                                            ╲                                  ╱                                                            ╲                                  ╱                                                            ╲
+                                                                                                                ╱                                                              ╲                                ╱                                                              ╲                                ╱                                                              ╲
+                                                                                                               ╱                                                                ╲                              ╱                                                                ╲                              ╱                                                                ╲
+                                                                                                              ╱                                                                  ╲                            ╱                                                                  ╲                            ╱                                                                  ╲
+                                                                                                             ╱                                                                    ╲                          ╱                                                                    ╲                          ╱                                                                    ╲
+                                                                                                            ╱                                                                      ╲                        ╱                                                                      ╲                        ╱                                                                      ╲
+                                                                                                           ╱                                                                        ╲                      ╱                                                                        ╲                      ╱                                                                        ╲
+                                                                                                          ╱                                                                          ╲                    ╱                                                                          ╲                    ╱                                                                          ╲
+                                                                                                         ╱                                                                            ╲                  ╱                                                                            ╲                  ╱                                                                            ╲
+                                                                                                        ╱                                                                              ╲                ╱                                                                              ╲                ╱                                                                              ╲
+                                                                                                       ╱                                                                                ╲              ╱                                                                                ╲              ╱                                                                                ╲
+                                                                                                      ╱                                                                                  ╲            ╱                                                                                  ╲            ╱                                                                                  ╲
+                                                                                                     ╱                                                                                    ╲          ╱                                                                                    ╲          ╱                                                                                    ╲
+                                                                                                    ╱                                                                                      ╲        ╱                                                                                      ╲        ╱                                                                                      ╲
+                                                                                                   ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲
+                                                                                                  ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲
+                                                                                                 ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲
+                                                                                                ╱                                                                                            {}╲╱                                                                                            {}╲╱                                                         {C:{(&#39;B&#39;, &#39;A&#39;, 3)},A:{(&#39;B&#39;, &#39;A&#39;, 3)}}╲
+                                                                                               ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                              ╱╲
+                                                                                              ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲
+                                                                                             ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲
+                                                                                            ╱      ╲                                                                                        ╱      ╲                                                                                        ╱      ╲                                                                                        ╱      ╲
+                                                                                           ╱        ╲                                                                                      ╱        ╲                                                                                      ╱        ╲                                                                                      ╱        ╲
+                                                                                          ╱          ╲                                                                                    ╱          ╲                                                                                    ╱          ╲                                                                                    ╱          ╲
+                                                                                         ╱            ╲                                                                                  ╱            ╲                                                                                  ╱            ╲                                                                                  ╱            ╲
+                                                                                        ╱              ╲                                                                                ╱              ╲                                                                                ╱              ╲                                                                                ╱              ╲
+                                                                                       ╱                ╲                                                                              ╱                ╲                                                                              ╱                ╲                                                                              ╱                ╲
+                                                                                      ╱                  ╲                                                                            ╱                  ╲                                                                            ╱                  ╲                                                                            ╱                  ╲
+                                                                                     ╱                    ╲                                                                          ╱                    ╲                                                                          ╱                    ╲                                                                          ╱                    ╲
+                                                                                    ╱                      ╲                                                                        ╱                      ╲                                                                        ╱                      ╲                                                                        ╱                      ╲
+                                                                                   ╱                        ╲                                                                      ╱                        ╲                                                                      ╱                        ╲                                                                      ╱                        ╲
+                                                                                  ╱                          ╲                                                                    ╱                          ╲                                                                    ╱                          ╲                                                                    ╱                          ╲
+                                                                                 ╱                            ╲                                                                  ╱                            ╲                                                                  ╱                            ╲                                                                  ╱                            ╲
+                                                                                ╱                              ╲                                                                ╱                              ╲                                                                ╱                              ╲                                                                ╱                              ╲
+                                                                               ╱                                ╲                                                              ╱                                ╲                                                              ╱                                ╲                                                              ╱                                ╲
+                                                                              ╱                                  ╲                                                            ╱                                  ╲                                                            ╱                                  ╲                                                            ╱                                  ╲
+                                                                             ╱                                    ╲                                                          ╱                                    ╲                                                          ╱                                    ╲                                                          ╱                                    ╲
+                                                                            ╱                                      ╲                                                        ╱                                      ╲                                                        ╱                                      ╲                                                        ╱                                      ╲
+                                                                           ╱                                        ╲                                                      ╱                                        ╲                                                      ╱                                        ╲                                                      ╱                                        ╲
+                                                                          ╱                                          ╲                                                    ╱                                          ╲                                                    ╱                                          ╲                                                    ╱                                          ╲
+                                                                         ╱                                            ╲                                                  ╱                                            ╲                                                  ╱                                            ╲                                                  ╱                                            ╲
+                                                                        ╱                                              ╲                                                ╱                                              ╲                                                ╱                                              ╲                                                ╱                                              ╲
+                                                                       ╱                                                ╲                                              ╱                                                ╲                                              ╱                                                ╲                                              ╱                                                ╲
+                                                                      ╱                                                  ╲                                            ╱                                                  ╲                                            ╱                                                  ╲                                            ╱                                                  ╲
+                                                                     ╱                                                    ╲                                          ╱                                                    ╲                                          ╱                                                    ╲                                          ╱                                                    ╲
+                                                                    ╱                                                      ╲                                        ╱                                                      ╲                                        ╱                                                      ╲                                        ╱                                                      ╲
+                                                                   ╱                                                        ╲                                      ╱                                                        ╲                                      ╱                                                        ╲                                      ╱                                                        ╲
+                                                                  ╱                                                          ╲                                    ╱                                                          ╲                                    ╱                                                          ╲                                    ╱                                                          ╲
+                                                                 ╱                                                            ╲                                  ╱                                                            ╲                                  ╱                                                            ╲                                  ╱                                                            ╲
+                                                                ╱                                                              ╲                                ╱                                                              ╲                                ╱                                                              ╲                                ╱                                                              ╲
+                                                               ╱                                                                ╲                              ╱                                                                ╲                              ╱                                                                ╲                              ╱                                                                ╲
+                                                              ╱                                                                  ╲                            ╱                                                                  ╲                            ╱                                                                  ╲                            ╱                                                                  ╲
+                                                             ╱                                                                    ╲                          ╱                                                                    ╲                          ╱                                                                    ╲                          ╱                                                                    ╲
+                                                            ╱                                                                      ╲                        ╱                                                                      ╲                        ╱                                                                      ╲                        ╱                                                                      ╲
+                                                           ╱                                                                        ╲                      ╱                                                                        ╲                      ╱                                                                        ╲                      ╱                                                                        ╲
+                                                          ╱                                                                          ╲                    ╱                                                                          ╲                    ╱                                                                          ╲                    ╱                                                                          ╲
+                                                         ╱                                                                            ╲                  ╱                                                                            ╲                  ╱                                                                            ╲                  ╱                                                                            ╲
+                                                        ╱                                                                              ╲                ╱                                                                              ╲                ╱                                                                              ╲                ╱                                                                              ╲
+                                                       ╱                                                                                ╲              ╱                                                                                ╲              ╱                                                                                ╲              ╱                                                                                ╲
+                                                      ╱                                                                                  ╲            ╱                                                                                  ╲            ╱                                                                                  ╲            ╱                                                                                  ╲
+                                                     ╱                                                                                    ╲          ╱                                                                                    ╲          ╱                                                                                    ╲          ╱                                                                                    ╲
+                                                    ╱                                                                                      ╲        ╱                                                                                      ╲        ╱                                                                                      ╲        ╱                                                                                      ╲
+                                                   ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲
+                                                  ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲
+                                                 ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲
+                                                ╱                                                         {A:{(&#39;A&#39;, &#39;A&#39;, 1)},C:{(&#39;A&#39;, &#39;A&#39;, 1)}}╲╱                                                                                            {}╲╱                                                                                            {}╲╱                                                         {C:{(&#39;B&#39;, &#39;A&#39;, 4)},A:{(&#39;B&#39;, &#39;A&#39;, 4)}}╲
+                                               ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                              ╱╲
+                                              ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲
+                                             ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲
+                                            ╱      ╲                                                                                        ╱      ╲                                                                                        ╱      ╲                                                                                        ╱      ╲                                                                                        ╱      ╲
+                                           ╱        ╲                                                                                      ╱        ╲                                                                                      ╱        ╲                                                                                      ╱        ╲                                                                                      ╱        ╲
+                                          ╱          ╲                                                                                    ╱          ╲                                                                                    ╱          ╲                                                                                    ╱          ╲                                                                                    ╱          ╲
+                                         ╱            ╲                                                                                  ╱            ╲                                                                                  ╱            ╲                                                                                  ╱            ╲                                                                                  ╱            ╲
+                                        ╱              ╲                                                                                ╱              ╲                                                                                ╱              ╲                                                                                ╱              ╲                                                                                ╱              ╲
+                                       ╱                ╲                                                                              ╱                ╲                                                                              ╱                ╲                                                                              ╱                ╲                                                                              ╱                ╲
+                                      ╱                  ╲                                                                            ╱                  ╲                                                                            ╱                  ╲                                                                            ╱                  ╲                                                                            ╱                  ╲
+                                     ╱                    ╲                                                                          ╱                    ╲                                                                          ╱                    ╲                                                                          ╱                    ╲                                                                          ╱                    ╲
+                                    ╱                      ╲                                                                        ╱                      ╲                                                                        ╱                      ╲                                                                        ╱                      ╲                                                                        ╱                      ╲
+                                   ╱                        ╲                                                                      ╱                        ╲                                                                      ╱                        ╲                                                                      ╱                        ╲                                                                      ╱                        ╲
+                                  ╱                          ╲                                                                    ╱                          ╲                                                                    ╱                          ╲                                                                    ╱                          ╲                                                                    ╱                          ╲
+                                 ╱                            ╲                                                                  ╱                            ╲                                                                  ╱                            ╲                                                                  ╱                            ╲                                                                  ╱                            ╲
+                                ╱                              ╲                                                                ╱                              ╲                                                                ╱                              ╲                                                                ╱                              ╲                                                                ╱                              ╲
+                               ╱                                ╲                                                              ╱                                ╲                                                              ╱                                ╲                                                              ╱                                ╲                                                              ╱                                ╲
+                              ╱                                  ╲                                                            ╱                                  ╲                                                            ╱                                  ╲                                                            ╱                                  ╲                                                            ╱                                  ╲
+                             ╱                                    ╲                                                          ╱                                    ╲                                                          ╱                                    ╲                                                          ╱                                    ╲                                                          ╱                                    ╲
+                            ╱                                      ╲                                                        ╱                                      ╲                                                        ╱                                      ╲                                                        ╱                                      ╲                                                        ╱                                      ╲
+                           ╱                                        ╲                                                      ╱                                        ╲                                                      ╱                                        ╲                                                      ╱                                        ╲                                                      ╱                                        ╲
+                          ╱                                          ╲                                                    ╱                                          ╲                                                    ╱                                          ╲                                                    ╱                                          ╲                                                    ╱                                          ╲
+                         ╱                                            ╲                                                  ╱                                            ╲                                                  ╱                                            ╲                                                  ╱                                            ╲                                                  ╱                                            ╲
+                        ╱                                              ╲                                                ╱                                              ╲                                                ╱                                              ╲                                                ╱                                              ╲                                                ╱                                              ╲
+                       ╱                                                ╲                                              ╱                                                ╲                                              ╱                                                ╲                                              ╱                                                ╲                                              ╱                                                ╲
+                      ╱                                                  ╲                                            ╱                                                  ╲                                            ╱                                                  ╲                                            ╱                                                  ╲                                            ╱                                                  ╲
+                     ╱                                                    ╲                                          ╱                                                    ╲                                          ╱                                                    ╲                                          ╱                                                    ╲                                          ╱                                                    ╲
+                    ╱                                                      ╲                                        ╱                                                      ╲                                        ╱                                                      ╲                                        ╱                                                      ╲                                        ╱                                                      ╲
+                   ╱                                                        ╲                                      ╱                                                        ╲                                      ╱                                                        ╲                                      ╱                                                        ╲                                      ╱                                                        ╲
+                  ╱                                                          ╲                                    ╱                                                          ╲                                    ╱                                                          ╲                                    ╱                                                          ╲                                    ╱                                                          ╲
+                 ╱                                                            ╲                                  ╱                                                            ╲                                  ╱                                                            ╲                                  ╱                                                            ╲                                  ╱                                                            ╲
+                ╱                                                              ╲                                ╱                                                              ╲                                ╱                                                              ╲                                ╱                                                              ╲                                ╱                                                              ╲
+               ╱                                                                ╲                              ╱                                                                ╲                              ╱                                                                ╲                              ╱                                                                ╲                              ╱                                                                ╲
+              ╱                                                                  ╲                            ╱                                                                  ╲                            ╱                                                                  ╲                            ╱                                                                  ╲                            ╱                                                                  ╲
+             ╱                                                                    ╲                          ╱                                                                    ╲                          ╱                                                                    ╲                          ╱                                                                    ╲                          ╱                                                                    ╲
+            ╱                                                                      ╲                        ╱                                                                      ╲                        ╱                                                                      ╲                        ╱                                                                      ╲                        ╱                                                                      ╲
+           ╱                                                                        ╲                      ╱                                                                        ╲                      ╱                                                                        ╲                      ╱                                                                        ╲                      ╱                                                                        ╲
+          ╱                                                                          ╲                    ╱                                                                          ╲                    ╱                                                                          ╲                    ╱                                                                          ╲                    ╱                                                                          ╲
+         ╱                                                                            ╲                  ╱                                                                            ╲                  ╱                                                                            ╲                  ╱                                                                            ╲                  ╱                                                                            ╲
+        ╱                                                                              ╲                ╱                                                                              ╲                ╱                                                                              ╲                ╱                                                                              ╲                ╱                                                                              ╲
+       ╱                                                                                ╲              ╱                                                                                ╲              ╱                                                                                ╲              ╱                                                                                ╲              ╱                                                                                ╲
+      ╱                                                                                  ╲            ╱                                                                                  ╲            ╱                                                                                  ╲            ╱                                                                                  ╲            ╱                                                                                  ╲
+     ╱                                                                                    ╲          ╱                                                                                    ╲          ╱                                                                                    ╲          ╱                                                                                    ╲          ╱                                                                                    ╲
+    ╱                                                                                      ╲        ╱                                                                                      ╲        ╱                                                                                      ╲        ╱                                                                                      ╲        ╱                                                                                      ╲
+   ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲
+  ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲
+ ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲
+╱                                                                                         {A:∅}╲╱                                                                                         {A:∅}╲╱                                                                                         {B:∅}╲╱                                                                                         {B:∅}╲╱                                                                                         {A:∅}╲
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">trees</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get_trees</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">trees</span><span class="p">)</span><span class="si">}</span><span class="s2"> possible parse trees:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cat_pretty</span><span class="p">(</span><span class="n">trees</span><span class="p">,</span> <span class="n">crosses</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">grid_off</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+
+<span class="c1"># ## Working with Data</span>
+
+<span class="c1"># ### Harmonic Annotations</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>There are 3 possible parse trees:
+           |           |
+     A     |     A     |     A
+    ╱ A    |    ╱ ╲    |    ╱ ╲
+   ╱ ╱ A   |   ╱   A   |   ╱   C
+  ╱ ╱ ╱ A  |  A   ╱ A  |  C   ╱ A
+ A A B B A | A A B B A | A A B B A
+</pre></div>
+</div>
+</section>
+<section id="the-annotated-beethoven-corpus-abc-https-github-com-dcmlab-abc">
+<h2>[The Annotated Beethoven Corpus (ABC)](<a class="reference external" href="https://github.com/DCMLab/ABC">https://github.com/DCMLab/ABC</a>)<a class="headerlink" href="#the-annotated-beethoven-corpus-abc-https-github-com-dcmlab-abc" title="Link to this heading"></a></h2>
+<p>is a dataset expert harmonic analyses of all Beethoven string quartets. The harmonic labels contain more information and a broader variety of chords than what was possible to cover in the lectures. The following code loads data from one of the files (change <code class="docutils literal notranslate"><span class="pre">file_idx</span></code> to change the file) and extracts the basic numeral annotations. As you can see, these are still somewhat richer and more diverse than what we have covered.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">muprocdurham</span><span class="w"> </span><span class="kn">import</span> <span class="n">dcml_harmony_regex</span> <span class="k">as</span> <span class="n">regex</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">corpusinterface</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ci</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span>
+
+<span class="n">ci</span><span class="o">.</span><span class="n">reset_config</span><span class="p">(</span><span class="s1">&#39;ABC_corpus.ini&#39;</span><span class="p">)</span>
+
+<span class="n">corpus</span> <span class="o">=</span> <span class="n">ci</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;ABC_harmonies_tsv&quot;</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">file_idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">corpus</span><span class="o">.</span><span class="n">files</span><span class="p">()):</span>
+    <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="n">file_idx</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">harmonies</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">])</span>
+    <span class="n">cleaned_harmonies</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">harmonies</span><span class="p">:</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="c1"># print(f&quot;Full: {h}, Chord: {match[&#39;chord&#39;]}, numeral: {match[&#39;numeral&#39;]}&quot;)  # uncomment for more info</span>
+        <span class="n">cleaned_harmonies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="s1">&#39;numeral&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cleaned_harmonies</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>n14op131_07.harmonies.tsv
+[&#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;v&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;bII&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;#vii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;#vii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;v&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;iv&#39;, &#39;V&#39;, &#39;III&#39;, &#39;V&#39;, &#39;I&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;#vii&#39;, &#39;vii&#39;, &#39;vii&#39;, &#39;vii&#39;, &#39;vii&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;IV&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;v&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;iv&#39;, &#39;V&#39;, &#39;i&#39;, &#39;vii&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;v&#39;, &#39;V&#39;, &#39;v&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;v&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;I&#39;, &#39;vi&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;I&#39;, &#39;#vii&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;V&#39;, &#39;I&#39;, &#39;vi&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;I&#39;, &#39;#vii&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;VI&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;i&#39;, &#39;i&#39;, &#39;VI&#39;, &#39;VI&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;#vii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;#vii&#39;, &#39;#vii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;#vii&#39;, &#39;#vii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;I&#39;, &#39;V&#39;, &#39;I&#39;, &#39;IV&#39;, &#39;I&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;I&#39;, &#39;IV&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;V&#39;, &#39;I&#39;, &#39;IV&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;#iv&#39;, &#39;V&#39;, &#39;I&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;#vii&#39;, &#39;vii&#39;, &#39;vii&#39;, &#39;ii&#39;, &#39;I&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;IV&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;IV&#39;, &#39;V&#39;, &#39;ii&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;ii&#39;, &#39;I&#39;, &#39;I&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;#vii&#39;, &#39;vii&#39;, &#39;vii&#39;, &#39;vii&#39;, &#39;I&#39;, &#39;I&#39;, &#39;V&#39;, &#39;V&#39;, &#39;IV&#39;, &#39;V&#39;, &#39;I&#39;, &#39;V&#39;, &#39;iv&#39;, &#39;V&#39;, &#39;i&#39;, &#39;#vii&#39;, &#39;i&#39;, &#39;vii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;#vii&#39;, &#39;i&#39;, &#39;iv&#39;, &#39;i&#39;, &#39;iv&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;#vii&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;#vii&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;#vii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;#vii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;VI&#39;, &#39;V&#39;, &#39;iv&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;VI&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;#vii&#39;, &#39;i&#39;, &#39;i&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;iv&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;iv&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;VII&#39;, &#39;VI&#39;, &#39;III&#39;, &#39;iv&#39;, &#39;i&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;VII&#39;, &#39;iv&#39;, &#39;III&#39;, &#39;iv&#39;, &#39;III&#39;, &#39;ii&#39;, &#39;V&#39;, &#39;bII&#39;, &#39;bII&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;i&#39;, &#39;bII&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;i&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;i&#39;, &#39;V&#39;, &#39;IV&#39;, &#39;IV&#39;, &#39;iv&#39;, &#39;iv&#39;, &#39;V&#39;, &#39;iv&#39;, &#39;iv&#39;, &#39;iv&#39;, &#39;iv&#39;, &#39;V&#39;, &#39;bII&#39;, &#39;#vii&#39;, &#39;I&#39;, &#39;iv&#39;, &#39;iv&#39;, &#39;iv&#39;, &#39;I&#39;, &#39;iv&#39;, &#39;iv&#39;, &#39;I&#39;, &#39;iv&#39;, &#39;I&#39;, &#39;iv&#39;, &#39;I&#39;, &#39;iv&#39;, &#39;I&#39;, &#39;iv&#39;, &#39;iv&#39;, &#39;I&#39;, &#39;iv&#39;, &#39;I&#39;, &#39;I&#39;, &#39;I&#39;, &#39;I&#39;, &#39;I&#39;]
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>Exercise:<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>Use one of the following grammars (similar to those from the lecture slides) to parse the first couple of harmonies (try out different pieces) and check how many possible parse trees there are.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">major_grammar</span> <span class="o">=</span> <span class="n">TreeCFG</span><span class="p">(</span>
+    <span class="n">non_terminal_rules</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;IV&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;IV&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;vii0&#39;</span><span class="p">,</span> <span class="s1">&#39;IV&#39;</span><span class="p">,</span> <span class="s1">&#39;vii0&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;iii&#39;</span><span class="p">,</span> <span class="s1">&#39;vii0&#39;</span><span class="p">,</span> <span class="s1">&#39;iii&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;vi&#39;</span><span class="p">,</span> <span class="s1">&#39;iii&#39;</span><span class="p">,</span> <span class="s1">&#39;vi&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;ii&#39;</span><span class="p">,</span> <span class="s1">&#39;vi&#39;</span><span class="p">,</span> <span class="s1">&#39;ii&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;ii&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">)],</span>
+    <span class="c1"># relative</span>
+    <span class="n">terminal_rules</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;IV&#39;</span><span class="p">,</span> <span class="s1">&#39;IV&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;vii0&#39;</span><span class="p">,</span> <span class="s1">&#39;vii0&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;iii&#39;</span><span class="p">,</span> <span class="s1">&#39;iii&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;vi&#39;</span><span class="p">,</span> <span class="s1">&#39;vi&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;ii&#39;</span><span class="p">,</span> <span class="s1">&#39;ii&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">)],</span>
+    <span class="c1"># C Major</span>
+    <span class="c1"># terminal_rules=[(&#39;I&#39;, &#39;C&#39;),</span>
+    <span class="c1">#                 (&#39;IV&#39;, &#39;F&#39;),</span>
+    <span class="c1">#                 (&#39;vii0&#39;, &#39;B0&#39;),</span>
+    <span class="c1">#                 (&#39;iii&#39;, &#39;Em&#39;),</span>
+    <span class="c1">#                 (&#39;vi&#39;, &#39;Am&#39;),</span>
+    <span class="c1">#                 (&#39;ii&#39;, &#39;Dm&#39;),</span>
+    <span class="c1">#                 (&#39;V&#39;, &#39;G&#39;)],</span>
+    <span class="n">start_symbol</span><span class="o">=</span><span class="s1">&#39;I&#39;</span>
+<span class="p">)</span>
+
+<span class="n">minor_grammar</span> <span class="o">=</span> <span class="n">TreeCFG</span><span class="p">(</span>
+    <span class="n">non_terminal_rules</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;iv&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;iv&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;VII&#39;</span><span class="p">,</span> <span class="s1">&#39;iv&#39;</span><span class="p">,</span> <span class="s1">&#39;VII&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;III&#39;</span><span class="p">,</span> <span class="s1">&#39;VII&#39;</span><span class="p">,</span> <span class="s1">&#39;III&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;VI&#39;</span><span class="p">,</span> <span class="s1">&#39;III&#39;</span><span class="p">,</span> <span class="s1">&#39;VI&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;ii0&#39;</span><span class="p">,</span> <span class="s1">&#39;VI&#39;</span><span class="p">,</span> <span class="s1">&#39;ii0&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;ii0&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;ii0&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">)],</span>
+    <span class="c1"># relative</span>
+    <span class="n">terminal_rules</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;iv&#39;</span><span class="p">,</span> <span class="s1">&#39;iv&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;VII&#39;</span><span class="p">,</span> <span class="s1">&#39;VII&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;III&#39;</span><span class="p">,</span> <span class="s1">&#39;III&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;VI&#39;</span><span class="p">,</span> <span class="s1">&#39;VI&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;ii0&#39;</span><span class="p">,</span> <span class="s1">&#39;ii0&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">)],</span>
+    <span class="c1"># A Minor</span>
+    <span class="c1"># terminal_rules=[(&#39;i&#39;, &#39;Am&#39;),</span>
+    <span class="c1">#                 (&#39;iv&#39;, &#39;Dm&#39;),</span>
+    <span class="c1">#                 (&#39;VII&#39;, &#39;G&#39;),</span>
+    <span class="c1">#                 (&#39;III&#39;, &#39;C&#39;),</span>
+    <span class="c1">#                 (&#39;VI&#39;, &#39;F&#39;),</span>
+    <span class="c1">#                 (&#39;ii0&#39;, &#39;B0&#39;),</span>
+    <span class="c1">#                 (&#39;V&#39;, &#39;E&#39;),</span>
+    <span class="c1">#                 (&#39;v&#39;, &#39;Em&#39;)],</span>
+    <span class="n">start_symbol</span><span class="o">=</span><span class="s1">&#39;i&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">grammar</span> <span class="o">=</span> <span class="n">major_grammar</span>
+<span class="c1"># grammar = minor_grammar</span>
+<span class="n">grammar</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">cleaned_harmonies</span><span class="p">[:</span><span class="mi">8</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grammar</span><span class="o">.</span><span class="n">chart</span><span class="o">.</span><span class="n">pretty</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                               ╱╲
+                              ╱  ╲
+                             ╱    ╲
+                            ╱    {}╲
+                           ╱╲      ╱╲
+                          ╱  ╲    ╱  ╲
+                         ╱    ╲  ╱    ╲
+                        ╱    {}╲╱    {}╲
+                       ╱╲      ╱╲      ╱╲
+                      ╱  ╲    ╱  ╲    ╱  ╲
+                     ╱    ╲  ╱    ╲  ╱    ╲
+                    ╱    {}╲╱    {}╲╱    {}╲
+                   ╱╲      ╱╲      ╱╲      ╱╲
+                  ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲
+                 ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲
+                ╱    {}╲╱    {}╲╱    {}╲╱    {}╲
+               ╱╲      ╱╲      ╱╲      ╱╲      ╱╲
+              ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲
+             ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲
+            ╱    {}╲╱    {}╲╱    {}╲╱    {}╲╱    {}╲
+           ╱╲      ╱╲      ╱╲      ╱╲      ╱╲      ╱╲
+          ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲
+         ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲
+        ╱    {}╲╱    {}╲╱    {}╲╱    {}╲╱    {}╲╱    {}╲
+       ╱╲      ╱╲      ╱╲      ╱╲      ╱╲      ╱╲      ╱╲
+      ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲
+     ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲
+    ╱    {}╲╱    {}╲╱    {}╲╱    {}╲╱    {}╲╱    {}╲╱    {}╲
+   ╱╲      ╱╲      ╱╲      ╱╲      ╱╲      ╱╲      ╱╲      ╱╲
+  ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲    ╱  ╲
+ ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲  ╱    ╲
+╱    {}╲╱ {V:∅}╲╱    {}╲╱ {V:∅}╲╱    {}╲╱ {V:∅}╲╱ {V:∅}╲╱    {}╲
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">trees</span> <span class="o">=</span> <span class="n">grammar</span><span class="o">.</span><span class="n">get_trees</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">trees</span><span class="p">)</span><span class="si">}</span><span class="s2"> possible parse trees&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cat_pretty</span><span class="p">(</span><span class="n">trees</span><span class="p">,</span> <span class="n">crosses</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">grid_off</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+
+<span class="c1"># In[ ]:</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0 possible parse trees
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.696 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-practical-hierarchical-models-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/3d1373d5bd7d73a331bed8bd58ff3a8b/Practical_Hierarchical_Models.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">Practical_Hierarchical_Models.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/2f25fb6ac10c28afabd506158d6431b5/Practical_Hierarchical_Models.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Practical_Hierarchical_Models.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/cb7fca4e1f2de47a9cf58aabefd74c95/Practical_Hierarchical_Models.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">Practical_Hierarchical_Models.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Practical_Sequential_Models.html" class="btn btn-neutral float-left" title="Practical: Sequential Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Practical_Shepard_Tones_and_Pitch-Class_Embeddings.html" class="btn btn-neutral float-right" title="Shepard Tones" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Robert Lieck, Eamonn Bell, Mark Gotham.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
