@@ -419,7 +419,7 @@ Bigram Counts (rows: from; columns: to)
 
  .. code-block:: none
 
-    {0.0} <music21.stream.Part 0x7faf9740cb80>
+    {0.0} <music21.stream.Part 0x7f95cc44be80>
         {0.0} <music21.stream.Measure 0 offset=0.0>
             {0.0} <music21.note.Note G>
             {0.25} <music21.note.Note E>
@@ -601,7 +601,7 @@ Bigram Counts (rows: from; columns: to)
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.182 seconds)
+   **Total running time of the script:** (0 minutes 2.243 seconds)
 
 
 .. _sphx_glr_download_auto_examples_Practical_Sequential_Models.py:

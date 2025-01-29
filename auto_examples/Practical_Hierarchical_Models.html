@@ -190,7 +190,7 @@ to download the full example code.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>           ╱╲
           ╱  ╲
          ╱    ╲
-        ╱ {D,A}╲
+        ╱ {A,D}╲
        ╱╲      ╱╲
       ╱  ╲    ╱  ╲
      ╱    ╲  ╱    ╲
@@ -215,7 +215,7 @@ to download the full example code.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>           ╱╲            level
           ╱  ╲
          ╱    ╲
-        ╱ {D,A}╲         3
+        ╱ {A,D}╲         3
        ╱╲      ╱╲
       ╱  ╲    ╱  ╲
      ╱    ╲  ╱    ╲
@@ -364,11 +364,11 @@ to download the full example code.</p>
 <span class="c1">#</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>non-terminal rules: {(&#39;A&#39;, &#39;A&#39;, &#39;A&#39;), (&#39;A&#39;, &#39;B&#39;, &#39;A&#39;)}
-terminal rules: {(&#39;A&#39;, &#39;a&#39;), (&#39;B&#39;, &#39;b&#39;)}
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>non-terminal rules: {(&#39;A&#39;, &#39;B&#39;, &#39;A&#39;), (&#39;A&#39;, &#39;A&#39;, &#39;A&#39;)}
+terminal rules: {(&#39;B&#39;, &#39;b&#39;), (&#39;A&#39;, &#39;a&#39;)}
 start symbol: A
-non-terminal symbols: {&#39;A&#39;, &#39;B&#39;}
-terminal symbols: {&#39;b&#39;, &#39;a&#39;}
+non-terminal symbols: {&#39;B&#39;, &#39;A&#39;}
+terminal symbols: {&#39;a&#39;, &#39;b&#39;}
 valid sequence: True
               ╱╲
              ╱  ╲
@@ -534,7 +534,7 @@ Exercise (HARD):
                                                                                                                                                                                                    ╱                                                                                        ╲
                                                                                                                                                                                                   ╱                                                                                          ╲
                                                                                                                                                                                                  ╱                                                                                            ╲
-                                                                                                                                                                                                ╱ {A:{(&#39;A&#39;, &#39;A&#39;, 1),(&#39;A&#39;, &#39;A&#39;, 2),(&#39;C&#39;, &#39;C&#39;, 2)},C:{(&#39;A&#39;, &#39;A&#39;, 1),(&#39;A&#39;, &#39;A&#39;, 2),(&#39;C&#39;, &#39;C&#39;, 2)}}╲
+                                                                                                                                                                                                ╱ {C:{(&#39;C&#39;, &#39;C&#39;, 2),(&#39;A&#39;, &#39;A&#39;, 1),(&#39;A&#39;, &#39;A&#39;, 2)},A:{(&#39;C&#39;, &#39;C&#39;, 2),(&#39;A&#39;, &#39;A&#39;, 1),(&#39;A&#39;, &#39;A&#39;, 2)}}╲
                                                                                                                                                                                                ╱╲                                                                                              ╱╲
                                                                                                                                                                                               ╱  ╲                                                                                            ╱  ╲
                                                                                                                                                                                              ╱    ╲                                                                                          ╱    ╲
@@ -582,7 +582,7 @@ Exercise (HARD):
                                                                                                                                                    ╱                                                                                        ╲      ╱                                                                                        ╲
                                                                                                                                                   ╱                                                                                          ╲    ╱                                                                                          ╲
                                                                                                                                                  ╱                                                                                            ╲  ╱                                                                                            ╲
-                                                                                                                                                ╱                                                                                            {}╲╱                                                         {A:{(&#39;A&#39;, &#39;A&#39;, 2)},C:{(&#39;A&#39;, &#39;A&#39;, 2)}}╲
+                                                                                                                                                ╱                                                                                            {}╲╱                                                         {C:{(&#39;A&#39;, &#39;A&#39;, 2)},A:{(&#39;A&#39;, &#39;A&#39;, 2)}}╲
                                                                                                                                                ╱╲                                                                                              ╱╲                                                                                              ╱╲
                                                                                                                                               ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲
                                                                                                                                              ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲
@@ -630,7 +630,7 @@ Exercise (HARD):
                                                                                                    ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲
                                                                                                   ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲
                                                                                                  ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲
-                                                                                                ╱                                                                                            {}╲╱                                                                                            {}╲╱                                                         {C:{(&#39;B&#39;, &#39;A&#39;, 3)},A:{(&#39;B&#39;, &#39;A&#39;, 3)}}╲
+                                                                                                ╱                                                                                            {}╲╱                                                                                            {}╲╱                                                         {A:{(&#39;B&#39;, &#39;A&#39;, 3)},C:{(&#39;B&#39;, &#39;A&#39;, 3)}}╲
                                                                                                ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                              ╱╲
                                                                                               ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲
                                                                                              ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲
@@ -678,7 +678,7 @@ Exercise (HARD):
                                                    ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲
                                                   ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲
                                                  ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲
-                                                ╱                                                         {A:{(&#39;A&#39;, &#39;A&#39;, 1)},C:{(&#39;A&#39;, &#39;A&#39;, 1)}}╲╱                                                                                            {}╲╱                                                                                            {}╲╱                                                         {C:{(&#39;B&#39;, &#39;A&#39;, 4)},A:{(&#39;B&#39;, &#39;A&#39;, 4)}}╲
+                                                ╱                                                         {C:{(&#39;A&#39;, &#39;A&#39;, 1)},A:{(&#39;A&#39;, &#39;A&#39;, 1)}}╲╱                                                                                            {}╲╱                                                                                            {}╲╱                                                         {A:{(&#39;B&#39;, &#39;A&#39;, 4)},C:{(&#39;B&#39;, &#39;A&#39;, 4)}}╲
                                                ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                              ╱╲
                                               ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲
                                              ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲
@@ -742,9 +742,9 @@ Exercise (HARD):
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>There are 3 possible parse trees:
            |           |
      A     |     A     |     A
-    ╱ A    |    ╱ ╲    |    ╱ ╲
-   ╱ ╱ A   |   ╱   A   |   ╱   C
-  ╱ ╱ ╱ A  |  A   ╱ A  |  C   ╱ A
+    ╱ ╲    |    ╱ A    |    ╱ ╲
+   ╱   C   |   ╱ ╱ A   |   ╱   A
+  C   ╱ A  |  ╱ ╱ ╱ A  |  A   ╱ A
  A A B B A | A A B B A | A A B B A
 </pre></div>
 </div>
@@ -895,7 +895,7 @@ Exercise (HARD):
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0 possible parse trees
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.696 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.411 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-practical-hierarchical-models-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3d1373d5bd7d73a331bed8bd58ff3a8b/Practical_Hierarchical_Models.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">Practical_Hierarchical_Models.ipynb</span></code></a></p>

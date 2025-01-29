@@ -306,7 +306,7 @@ Hints:
     [C, G, D#, E]
     [C, G, G, C, A]
 
-    [<matplotlib.lines.Line2D object at 0x7faf90908970>]
+    [<matplotlib.lines.Line2D object at 0x7f95c5bc9a50>]
 
 
 
@@ -366,13 +366,13 @@ Hints:
 
  .. code-block:: none
 
-    [0, 1]
-    [[0 0]
-     [1 0]
-     [2 0]
-     [1 0]
-     [1 1]
-     [1 2]]
+    [1, -1]
+    [[ 0  0]
+     [ 1  0]
+     [ 1  1]
+     [ 1  0]
+     [ 2 -1]
+     [ 2 -2]]
 
 
 
@@ -410,7 +410,7 @@ Hints:
  .. code-block:: none
 
 
-    [<matplotlib.lines.Line2D object at 0x7faf9046f040>]
+    [<matplotlib.lines.Line2D object at 0x7f95c58c49a0>]
 
 
 
@@ -465,7 +465,7 @@ Hints:
 
     0.9997254169637901 approx. 1
 
-    <matplotlib.legend.Legend object at 0x7faf90419de0>
+    <matplotlib.legend.Legend object at 0x7f95c5a38a60>
 
 
 
@@ -526,7 +526,7 @@ Hints:
  .. code-block:: none
 
 
-    [<matplotlib.lines.Line2D object at 0x7faf8aae6680>]
+    [<matplotlib.lines.Line2D object at 0x7f95cc24b760>]
 
 
 
@@ -573,7 +573,7 @@ Hints:
  .. code-block:: none
 
 
-    <matplotlib.collections.PathCollection object at 0x7faf90ddfa30>
+    <matplotlib.collections.PathCollection object at 0x7f95c6419ea0>
 
 
 
@@ -661,9 +661,9 @@ Hints:
 
  .. code-block:: none
 
-    [C, C, C, C, F, G, C, B, C, B, E, C]
+    [C, C, A#, C, F, C, F, D, G, C]
 
-    [<matplotlib.lines.Line2D object at 0x7faf90dcec20>]
+    [<matplotlib.lines.Line2D object at 0x7f95cbe4ee30>]
 
 
 
@@ -716,8 +716,8 @@ Hints:
 
  .. code-block:: none
 
-    [62, 62, 67, 67, 65, 65, 63, 63, 62, 58, 65, 70, 65, 60]
-    [D4, D4, G4, G4, F4, F4, D#4, D#4, D4, A#3, F4, A#4, F4, C4]
+    [62, 63, 67, 72, 67, 69, 61, 69, 69, 62, 62, 64, 69, 71, 66, 62, 67, 65, 64, 62]
+    [D4, D#4, G4, C5, G4, A4, C#4, A4, A4, D4, D4, E4, A4, B4, F#4, D4, G4, F4, E4, D4]
 
 
 
@@ -760,7 +760,7 @@ Use `music21` to make a score and play the melody.
 
  .. code-block:: none
 
-    [C4, C4, G4, D#4, C4, C4, C4, G4, C5, F4, A#4, A#4, A#4, A4, D4, G4, C5, C5, F4, C4]
+    [G4, C5, G#4, C5, A#4, F4, G4, G4, G4, G4, C5, G4, C5, A4, C5, F4, C4]
 
 
 
@@ -876,7 +876,7 @@ Use `music21` to make a score and play the melody.
  .. code-block:: none
 
 
-    [(0.5, True), (0.5, True), (1.0, True), (1.0, True), (0.5, True), (0.5, True), (4, True)]
+    [(1.0, True), (0.25, True), (0.25, False), (0.5, True), (1.0, True), (0.25, True), (0.25, False), (0.5, True), (4, True)]
 
 
 
@@ -941,8 +941,8 @@ Use `music21` to make a score and play the melody.
 
  .. code-block:: none
 
-    [C4, E4, D4, G4, G4, D#4, C#4, G#4, G#4, A#4, G#4, D#4, A#4, D#4, A#4, A#4, D#4, G#4, G4, G#4]
-    [(1.0, True), (1.0, False), (1.0, True), (0.5, True), (0.5, True), (0.5, True), (0.5, True), (1.0, True), (0.25, False), (0.25, True), (0.25, True), (0.25, True), (0.5, True), (0.5, True), (1.0, False), (1.0, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.5, False), (0.25, True), (0.25, True), (1.0, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (1.0, True), (1.0, False), (4, True)]
+    [C4, A4, A4, C#4, F#4, A4, F#4, A4, D4, D4, A4, A4, G4, D4, E4, E4, A4, D4, G4, F4]
+    [(0.5, True), (0.5, False), (0.5, True), (0.25, True), (0.25, False), (1.0, True), (1.0, True), (0.25, False), (0.25, True), (0.5, False), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.5, True), (0.25, True), (0.25, True), (0.25, False), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.5, True), (1.0, True), (0.5, True), (0.25, False), (0.25, True), (1.0, True), (0.5, True), (0.5, False), (1.0, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (4, True)]
 
 
 
@@ -987,7 +987,7 @@ Use `music21` to make a score and play the melody.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.199 seconds)
+   **Total running time of the script:** (0 minutes 3.264 seconds)
 
 
 .. _sphx_glr_download_auto_examples_Practical_Tonnetz_Generation.py:
