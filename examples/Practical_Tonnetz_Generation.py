@@ -511,7 +511,7 @@ for p in melody:
     stream.append(n)
 
 # stream.show()
-m21.midi.realtime.StreamPlayer(stream).play()
+# m21.midi.realtime.StreamPlayer(stream).play()
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -601,7 +601,7 @@ melody = get_melody(weights=weights, min_len=10, max_len=20)
 rhythm = get_rhythm(4)
 print([Enharmonic.Pitch(i) for i in melody])
 print(rhythm)
-rhythm_and_melody(rhythm=rhythm, melody=melody)
+# rhythm_and_melody(rhythm=rhythm, melody=melody)
 # rhythm_and_melody(rhythm=rhythm, melody=melody, use_m21=True)
 
 
