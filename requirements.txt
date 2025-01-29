@@ -1,8 +1,14 @@
+IPython
+jupyter
 numpy
 librosa==0.10.1
 libfmp==1.2.5
 ipympl==0.9.3
+matplotlib<3.10  # remove later, current incompatible dependencies
 music21
+umap-learn
+plotly
+pygame
 pitchtypes
 triangularmap
 corpusinterface

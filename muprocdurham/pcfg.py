@@ -2,6 +2,15 @@ from triangularmap import DictTMap, TMap
 from collections import defaultdict
 
 
+def cat_pretty(trees, off=False, *args, **kwargs):
+    if off:
+        return '\n'.join([tree.pretty(*args, **kwargs) for tree in trees])
+    else:
+        return '\n'.join(
+            list('|'.join(x) for x in zip(*[tree.pretty(*args, **kwargs).split('\n') for tree in trees]))
+        )
+
+
 class PrettySet(set):
     def __init__(self, *args, empty="∅", compact=True, left="{", right="}", **kwargs):
         super().__init__(*args, **kwargs)

@@ -61,7 +61,9 @@ imgmath_image_format='svg'
 # intersphinx mappings
 intersphinx_mapping = {}
 # report broken links
-nitpicky = True
+nitpicky = False
+
+sphinx_gallery_conf = {"filename_pattern": ''}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

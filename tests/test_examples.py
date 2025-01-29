@@ -1,6 +1,5 @@
 #  Copyright (c) 2022 Robert Lieck.
 from unittest import TestCase
-
 import os
 import importlib.util
 import pathlib
