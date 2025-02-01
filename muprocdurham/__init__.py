@@ -1,4 +1,10 @@
 import re
+import random
+import numpy as np
+from os import environ
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'  # supress pygame message before import
+import pygame
+import music21 as m21
 
 # see https://github.com/DCMLab/standards/blob/main/harmony.py
 dcml_harmony_regex = re.compile("".join(r"""
@@ -18,3 +24,23 @@ dcml_harmony_regex = re.compile("".join(r"""
     (|(?P<cadence>((HC|PAC|IAC|DC|EC)(\..*?)?)))?
     (?P<phraseend>(\\\\|\{|\}|\}\{))?$
     """.split()))
+
+
+def seed_everything(seed):
+    """Set random seed for reproducibility across multiple libraries."""
+    random.seed(seed)  # Python's built-in random module
+    np.random.seed(seed)  # NumPy's random module
+
+
+def show_stream(stream):
+    try:
+        stream.show()
+    except m21.converter.subConverters.SubConverterException:
+        stream.show('t')
+
+
+def play_stream(stream):
+    try:
+        m21.midi.realtime.StreamPlayer(stream).play()
+    except pygame.error:
+        print("Cannot play stream")

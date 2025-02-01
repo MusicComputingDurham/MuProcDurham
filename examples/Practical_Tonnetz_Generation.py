@@ -4,14 +4,6 @@ Tonnetz Generation
 ==================
 """
 
-# %%
-
-
-# !pip install muprocdurham  # latest release
-# !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@main  # latest main version (typically same as release)
-# !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@dev  # latest dev version
-
-
 # # Tonnetz Generation
 
 # %%
@@ -21,9 +13,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import music21 as m21
+import pygame
+import muprocdurham as mpd
 import muprocdurham.sound as mps
 from pitchtypes import Spelled, Enharmonic
-# !pip install pygame
+
+mpd.seed_everything(42)
 
 
 # This practical is about using the Tonnetz as a starting point to generate music.
@@ -510,8 +505,8 @@ for p in melody:
     n.quarterLength = 1/4
     stream.append(n)
 
-# stream.show()
-# m21.midi.realtime.StreamPlayer(stream).play()
+mpd.show_stream(stream)
+mpd.play_stream(stream)
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -586,9 +581,9 @@ def rhythm_and_melody(rhythm, melody, show=True, play=True, use_m21=False):
                 stream.append(0. * n)  # silence
     if use_m21:
         if show:
-            stream.show()
+            mpd.show_stream(stream)
         if play:
-            m21.midi.realtime.StreamPlayer(stream).play()
+            mpd.play_stream(stream)
     else:
         stream = np.concatenate(stream)
         if show:
@@ -601,8 +596,8 @@ melody = get_melody(weights=weights, min_len=10, max_len=20)
 rhythm = get_rhythm(4)
 print([Enharmonic.Pitch(i) for i in melody])
 print(rhythm)
-# rhythm_and_melody(rhythm=rhythm, melody=melody)
-# rhythm_and_melody(rhythm=rhythm, melody=melody, use_m21=True)
+rhythm_and_melody(rhythm=rhythm, melody=melody)
+rhythm_and_melody(rhythm=rhythm, melody=melody, use_m21=True)
 
 
 # ## Random Melody
