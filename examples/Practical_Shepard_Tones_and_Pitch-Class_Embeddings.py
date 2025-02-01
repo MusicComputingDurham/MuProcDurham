@@ -4,21 +4,15 @@ Shepard Tones
 =============
 """
 
-# In[ ]:
-
-
-# !pip install muprocdurham  # latest release
-# !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@main  # latest main version (typically same as release)
-# !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@dev  # latest dev version
-
-
 # %%
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 from muprocdurham import sound as s
-# !pip install umap-learn plotly  # if not alreay installed
+from muprocdurham import seed_everything
+
+seed_everything(42)
 
 
 # # Shepard Tones

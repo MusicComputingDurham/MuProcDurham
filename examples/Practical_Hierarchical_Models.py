@@ -4,14 +4,6 @@ Practical: Hierarchical Models
 ==============================
 """
 
-# In[ ]:
-
-
-# !pip install muprocdurham  # latest release
-# !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@main  # latest main version (typically same as release)
-# !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@dev  # latest dev version
-
-
 # # Practical: Hierarchical Models
 
 # ## Working with Charts
@@ -23,6 +15,9 @@ Practical: Hierarchical Models
 
 from muprocdurham.pcfg import SetChart, DictSetChart, cat_pretty
 from muprocdurham.jupyter import no_linebreaks
+from muprocdurham import seed_everything
+
+seed_everything(42)
 no_linebreaks()
 
 
@@ -448,10 +443,4 @@ print(grammar.chart.pretty())
 trees = grammar.get_trees()
 print(f"{len(trees)} possible parse trees")
 print(cat_pretty(trees, crosses=True, grid_off=True))
-
-
-# In[ ]:
-
-
-
 

@@ -548,7 +548,7 @@ def get_rhythm(n_bars, split_prob=0.5, beat_prob=0.8, max_splits=4, min_splits=2
         overall_rhythm += new_rhythm
     # append one final closing beat
     if final:
-        overall_rhythm += [(4, True)]
+        overall_rhythm += [(1, True)]
     return overall_rhythm
 
 get_rhythm(1)
@@ -563,7 +563,14 @@ def rhythm_and_melody(rhythm, melody, show=True, play=True, use_m21=False):
         stream = m21.stream.Stream()
     else:
         stream = []
-    for p, (d, b) in zip(melody, rhythm):
+    m_iter = iter(melody)
+    for d, b in rhythm:
+        if b:
+            try:
+                p = next(m_iter)
+            except StopIteration:
+                print("Melody too short!")
+                break
         if use_m21:
             if b:
                 n = m21.note.Note(p)
@@ -572,7 +579,7 @@ def rhythm_and_melody(rhythm, melody, show=True, play=True, use_m21=False):
             n.quarterLength = d
             stream.append(n)
         else:
-            f = Enharmonic.Pitch(p).freq() if b else 440
+            f = Enharmonic.Pitch(p).freq() if b else 1
             quarterduration = 0.5  # default speed is 120 in music21
             n = mps.render(mps.sound(f, duration=quarterduration * d))
             if b:
@@ -592,7 +599,11 @@ def rhythm_and_melody(rhythm, melody, show=True, play=True, use_m21=False):
             mps.audio(stream)
     # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-melody = get_melody(weights=weights, min_len=10, max_len=20)
+
+# %%
+
+
+melody = get_melody(weights=weights, min_len=50, max_len=100)
 rhythm = get_rhythm(4)
 print([Enharmonic.Pitch(i) for i in melody])
 print(rhythm)
