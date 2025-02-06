@@ -21,17 +21,9 @@
 Practical: Hierarchical Models
 ==============================
 
-.. GENERATED FROM PYTHON SOURCE LINES 6-21
+.. GENERATED FROM PYTHON SOURCE LINES 6-13
 
 .. code-block:: Python
-
-
-    # In[ ]:
-
-
-    # !pip install muprocdurham  # latest release
-    # !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@main  # latest main version (typically same as release)
-    # !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@dev  # latest dev version
 
 
     # # Practical: Hierarchical Models
@@ -47,7 +39,7 @@ Practical: Hierarchical Models
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-33
+.. GENERATED FROM PYTHON SOURCE LINES 14-28
 
 .. code-block:: Python
 
@@ -55,6 +47,9 @@ Practical: Hierarchical Models
 
     from muprocdurham.pcfg import SetChart, DictSetChart, cat_pretty
     from muprocdurham.jupyter import no_linebreaks
+    from muprocdurham import seed_everything
+
+    seed_everything(42)
     no_linebreaks()
 
 
@@ -71,11 +66,12 @@ Practical: Hierarchical Models
  .. code-block:: none
 
     <IPython.core.display.HTML object>
+    <IPython.core.display.HTML object>
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-42
+.. GENERATED FROM PYTHON SOURCE LINES 29-37
 
 .. code-block:: Python
 
@@ -107,7 +103,7 @@ Practical: Hierarchical Models
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-51
+.. GENERATED FROM PYTHON SOURCE LINES 38-46
 
 .. code-block:: Python
 
@@ -148,7 +144,7 @@ Practical: Hierarchical Models
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-60
+.. GENERATED FROM PYTHON SOURCE LINES 47-55
 
 Exercise:
 ---------
@@ -159,7 +155,7 @@ Add the symbol 'A' to the very top cell, the symbol 'B' to the center bottom cel
 
 Your result should look as below.
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-77
+.. GENERATED FROM PYTHON SOURCE LINES 57-72
 
 .. code-block:: Python
 
@@ -204,7 +200,7 @@ Your result should look as below.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-87
+.. GENERATED FROM PYTHON SOURCE LINES 73-82
 
 .. code-block:: Python
 
@@ -243,7 +239,7 @@ Your result should look as below.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-96
+.. GENERATED FROM PYTHON SOURCE LINES 83-91
 
 Exercise:
 ---------
@@ -254,7 +250,7 @@ In the top cell, add the values ``1`` and ``2`` to the symbol 'A' and the value 
 
 Your result should look as below.
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-116
+.. GENERATED FROM PYTHON SOURCE LINES 93-111
 
 .. code-block:: Python
 
@@ -306,7 +302,7 @@ Your result should look as below.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-190
+.. GENERATED FROM PYTHON SOURCE LINES 112-185
 
 .. code-block:: Python
 
@@ -390,7 +386,7 @@ Your result should look as below.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-212
+.. GENERATED FROM PYTHON SOURCE LINES 186-207
 
 .. code-block:: Python
 
@@ -423,10 +419,10 @@ Your result should look as below.
 
  .. code-block:: none
 
-    non-terminal rules: {('A', 'B', 'A'), ('A', 'A', 'A')}
-    terminal rules: {('B', 'b'), ('A', 'a')}
+    non-terminal rules: {('A', 'A', 'A'), ('A', 'B', 'A')}
+    terminal rules: {('A', 'a'), ('B', 'b')}
     start symbol: A
-    non-terminal symbols: {'B', 'A'}
+    non-terminal symbols: {'A', 'B'}
     terminal symbols: {'a', 'b'}
     valid sequence: True
                   ╱╲              
@@ -448,7 +444,7 @@ Your result should look as below.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 213-230
+.. GENERATED FROM PYTHON SOURCE LINES 208-225
 
 Exercise:
 ---------
@@ -468,7 +464,7 @@ Implement a ``get_trees`` method that uses the stored splitting points to comput
 - You can represent a tree with a ``SetChart`` that only contains the symbols that appear in the tree.
 - Start from the top and construct trees recursively (for any possible split, any combination of a right sub-tree and a left sub-tree is a valid tree).
 
-.. GENERATED FROM PYTHON SOURCE LINES 232-299
+.. GENERATED FROM PYTHON SOURCE LINES 227-294
 
 .. code-block:: Python
 
@@ -546,7 +542,7 @@ Implement a ``get_trees`` method that uses the stored splitting points to comput
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 300-322
+.. GENERATED FROM PYTHON SOURCE LINES 295-317
 
 .. code-block:: Python
 
@@ -628,7 +624,7 @@ Implement a ``get_trees`` method that uses the stored splitting points to comput
                                                                                                                                                                                                        ╱                                                                                        ╲                                                                                                                                                                                                   
                                                                                                                                                                                                       ╱                                                                                          ╲                                                                                                                                                                                                  
                                                                                                                                                                                                      ╱                                                                                            ╲                                                                                                                                                                                                 
-                                                                                                                                                                                                    ╱ {C:{('C', 'C', 2),('A', 'A', 1),('A', 'A', 2)},A:{('C', 'C', 2),('A', 'A', 1),('A', 'A', 2)}}╲                                                                                                                                                                                                
+                                                                                                                                                                                                    ╱ {A:{('C', 'C', 2),('A', 'A', 1),('A', 'A', 2)},C:{('C', 'C', 2),('A', 'A', 1),('A', 'A', 2)}}╲                                                                                                                                                                                                
                                                                                                                                                                                                    ╱╲                                                                                              ╱╲                                                                                                                                                                                               
                                                                                                                                                                                                   ╱  ╲                                                                                            ╱  ╲                                                                                                                                                                                              
                                                                                                                                                                                                  ╱    ╲                                                                                          ╱    ╲                                                                                                                                                                                             
@@ -676,7 +672,7 @@ Implement a ``get_trees`` method that uses the stored splitting points to comput
                                                                                                                                                        ╱                                                                                        ╲      ╱                                                                                        ╲                                                                                                                                                   
                                                                                                                                                       ╱                                                                                          ╲    ╱                                                                                          ╲                                                                                                                                                  
                                                                                                                                                      ╱                                                                                            ╲  ╱                                                                                            ╲                                                                                                                                                 
-                                                                                                                                                    ╱                                                                                            {}╲╱                                                         {C:{('A', 'A', 2)},A:{('A', 'A', 2)}}╲                                                                                                                                                
+                                                                                                                                                    ╱                                                                                            {}╲╱                                                         {A:{('A', 'A', 2)},C:{('A', 'A', 2)}}╲                                                                                                                                                
                                                                                                                                                    ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                                                                               
                                                                                                                                                   ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                                                                              
                                                                                                                                                  ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                                                                             
@@ -724,7 +720,7 @@ Implement a ``get_trees`` method that uses the stored splitting points to comput
                                                                                                        ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲                                                                                                   
                                                                                                       ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲                                                                                                  
                                                                                                      ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲                                                                                                 
-                                                                                                    ╱                                                                                            {}╲╱                                                                                            {}╲╱                                                         {A:{('B', 'A', 3)},C:{('B', 'A', 3)}}╲                                                                                                
+                                                                                                    ╱                                                                                            {}╲╱                                                                                            {}╲╱                                                         {C:{('B', 'A', 3)},A:{('B', 'A', 3)}}╲                                                                                                
                                                                                                    ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                               
                                                                                                   ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                              
                                                                                                  ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                             
@@ -772,7 +768,7 @@ Implement a ``get_trees`` method that uses the stored splitting points to comput
                                                        ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲      ╱                                                                                        ╲                                                   
                                                       ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲    ╱                                                                                          ╲                                                  
                                                      ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲  ╱                                                                                            ╲                                                 
-                                                    ╱                                                         {C:{('A', 'A', 1)},A:{('A', 'A', 1)}}╲╱                                                                                            {}╲╱                                                                                            {}╲╱                                                         {A:{('B', 'A', 4)},C:{('B', 'A', 4)}}╲                                                
+                                                    ╱                                                         {A:{('A', 'A', 1)},C:{('A', 'A', 1)}}╲╱                                                                                            {}╲╱                                                                                            {}╲╱                                                         {C:{('B', 'A', 4)},A:{('B', 'A', 4)}}╲                                                
                                                    ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                              ╱╲                                                                                              ╱╲                                               
                                                   ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                                                                            ╱  ╲                                              
                                                  ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                                                                          ╱    ╲                                             
@@ -825,7 +821,7 @@ Implement a ``get_trees`` method that uses the stored splitting points to comput
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 323-334
+.. GENERATED FROM PYTHON SOURCE LINES 318-329
 
 .. code-block:: Python
 
@@ -859,14 +855,14 @@ Implement a ``get_trees`` method that uses the stored splitting points to comput
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 335-339
+.. GENERATED FROM PYTHON SOURCE LINES 330-334
 
 [The Annotated Beethoven Corpus (ABC)](https://github.com/DCMLab/ABC)
 ---------------------------------------------------------------------
 
 is a dataset expert harmonic analyses of all Beethoven string quartets. The harmonic labels contain more information and a broader variety of chords than what was possible to cover in the lectures. The following code loads data from one of the files (change ``file_idx`` to change the file) and extracts the basic numeral annotations. As you can see, these are still somewhat richer and more diverse than what we have covered.
 
-.. GENERATED FROM PYTHON SOURCE LINES 341-366
+.. GENERATED FROM PYTHON SOURCE LINES 336-361
 
 .. code-block:: Python
 
@@ -909,14 +905,14 @@ is a dataset expert harmonic analyses of all Beethoven string quartets. The harm
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 367-371
+.. GENERATED FROM PYTHON SOURCE LINES 362-366
 
 Exercise:
 ---------
 
 Use one of the following grammars (similar to those from the lecture slides) to parse the first couple of harmonies (try out different pieces) and check how many possible parse trees there are.
 
-.. GENERATED FROM PYTHON SOURCE LINES 373-436
+.. GENERATED FROM PYTHON SOURCE LINES 368-431
 
 .. code-block:: Python
 
@@ -990,7 +986,7 @@ Use one of the following grammars (similar to those from the lecture slides) to 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 437-445
+.. GENERATED FROM PYTHON SOURCE LINES 432-440
 
 .. code-block:: Python
 
@@ -1046,7 +1042,7 @@ Use one of the following grammars (similar to those from the lecture slides) to 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 446-458
+.. GENERATED FROM PYTHON SOURCE LINES 441-447
 
 .. code-block:: Python
 
@@ -1055,12 +1051,6 @@ Use one of the following grammars (similar to those from the lecture slides) to 
     trees = grammar.get_trees()
     print(f"{len(trees)} possible parse trees")
     print(cat_pretty(trees, crosses=True, grid_off=True))
-
-
-    # In[ ]:
-
-
-
 
 
 
@@ -1079,7 +1069,7 @@ Use one of the following grammars (similar to those from the lecture slides) to 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.411 seconds)
+   **Total running time of the script:** (0 minutes 9.319 seconds)
 
 
 .. _sphx_glr_download_auto_examples_Practical_Hierarchical_Models.py:

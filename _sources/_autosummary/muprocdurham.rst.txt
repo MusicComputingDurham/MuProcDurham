@@ -9,6 +9,15 @@
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      play_stream
+      seed_everything
+      show_stream
+   
    
 
    
@@ -32,4 +41,5 @@
    ngram
    pcfg
    sound
+   version_check
 

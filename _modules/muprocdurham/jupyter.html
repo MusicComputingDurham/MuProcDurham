@@ -65,6 +65,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../muprocdurham.html">muprocdurham</a></li>
       <li class="breadcrumb-item active">muprocdurham.jupyter</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -75,11 +76,14 @@
            <div itemprop="articleBody">
              
   <h1>Source code for muprocdurham.jupyter</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+
+
 <div class="viewcode-block" id="no_linebreaks">
 <a class="viewcode-back" href="../../_autosummary/muprocdurham.jupyter.no_linebreaks.html#muprocdurham.jupyter.no_linebreaks">[docs]</a>
-<span></span><span class="k">def</span><span class="w"> </span><span class="nf">no_linebreaks</span><span class="p">():</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;div.output_area pre {white-space: pre;}&lt;/style&gt;&quot;</span><span class="p">))</span></div>
+<span class="k">def</span><span class="w"> </span><span class="nf">no_linebreaks</span><span class="p">():</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;div.output_area pre {white-space: pre;}&lt;/style&gt;&quot;</span><span class="p">))</span>  <span class="c1"># jupyter notebook</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;div.jp-OutputArea-output pre {white-space: pre;}&lt;/style&gt;&quot;</span><span class="p">))</span>  <span class="c1"># jupyter lab</span></div>
 
 </pre></div>
 

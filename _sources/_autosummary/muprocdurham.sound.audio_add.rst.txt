@@ -1,0 +1,6 @@
+muprocdurham.sound.audio\_add
+=============================
+
+.. currentmodule:: muprocdurham.sound
+
+.. autofunction:: audio_add

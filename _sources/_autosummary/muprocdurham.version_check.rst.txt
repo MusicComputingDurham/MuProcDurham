@@ -1,0 +1,30 @@
+muprocdurham.version\_check
+===========================
+
+.. automodule:: muprocdurham.version_check
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      check_for_update
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

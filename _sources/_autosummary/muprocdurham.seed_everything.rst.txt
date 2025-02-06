@@ -1,0 +1,6 @@
+muprocdurham.seed\_everything
+=============================
+
+.. currentmodule:: muprocdurham
+
+.. autofunction:: seed_everything

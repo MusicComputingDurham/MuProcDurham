@@ -1,0 +1,6 @@
+muprocdurham.show\_stream
+=========================
+
+.. currentmodule:: muprocdurham
+
+.. autofunction:: show_stream

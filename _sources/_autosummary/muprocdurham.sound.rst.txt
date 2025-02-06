@@ -15,6 +15,7 @@ muprocdurham.sound
       :toctree:
    
       audio
+      audio_add
       fade_wave
       harmonic_tone
       load

@@ -4,14 +4,6 @@ Practical: Sequential Models
 ============================
 """
 
-# %%
-
-
-# !pip install muprocdurham  # latest release
-# !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@main  # latest main version (typically same as release)
-# !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@dev  # latest dev version
-
-
 # # Practical: Sequential Models
 
 # ## Reading in a Sequence
@@ -20,22 +12,29 @@ Practical: Sequential Models
 # 
 # *Hints:*
 # - ``score.flat`` is an iterable over *all* elements in the score
-# - ``m21.note.Note`` and ``m21.chord.Chord`` are bases classes for single notes and chords respectively
+# - ``m21.note.Note`` and ``m21.chord.Chord`` are base classes for single notes and chords respectively
 # - use ``element.tie`` with [``m21.tie.Tie``](https://web.mit.edu/music21/doc/moduleReference/moduleTie.html) to check for tied notes
 # - use ``element.offset`` to check for time constraints.
 
 # %%
 
 
+import muprocdurham as mpd
 import numpy as np
 import music21 as m21
+
+mpd.seed_everything(42)
+
+
+# %%
+
 
 def pitch_sequence(score, ignore_chords=True, min_time=None, max_time=None):
     pitches = []
     # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
     # traverse all elements in the score
     for element in score.flat:
-        if isinstance(element, m21.note.Note) and element.tie != m21.tie.Tie("stop"):
+        if isinstance(element, m21.note.Note) and (element.tie is None or element.tie == m21.tie.Tie("start")):
             # check for min/max time
             if min_time is not None and element.offset < min_time:
                 continue
@@ -257,10 +256,7 @@ for pitch in s:
     measure.append(m21.note.Note(str(EnharmonicPitch(pitch)), type="16th"))
 part.append(measure)
 score.append(part)
-try:
-    score.show()
-except m21.converter.subConverters.SubConverterException:
-    score.show('t')
+mpd.show_stream(score)
 
 
 # Assume the unigram and bigram counts are used in a multi-order *n*-gram model that always uses the highest-order *n*-gram possible (the one with largest n) for predicting the next note. If the melody had been generated using this model, and ignoring the octave (i.e. treating the notes as pitch classes), what are the probabilities for the respective notes?

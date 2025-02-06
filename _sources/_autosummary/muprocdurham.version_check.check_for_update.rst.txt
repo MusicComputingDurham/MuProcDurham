@@ -1,0 +1,6 @@
+muprocdurham.version\_check.check\_for\_update
+==============================================
+
+.. currentmodule:: muprocdurham.version_check
+
+.. autofunction:: check_for_update

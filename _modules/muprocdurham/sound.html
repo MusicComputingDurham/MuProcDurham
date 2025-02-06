@@ -65,6 +65,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../muprocdurham.html">muprocdurham</a></li>
       <li class="breadcrumb-item active">muprocdurham.sound</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -146,6 +147,23 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">audio</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">fade</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">wave</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="n">wave</span><span class="o">=</span><span class="n">wave</span><span class="p">,</span> <span class="n">normalise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fade</span><span class="o">=</span><span class="n">fade</span><span class="p">)</span>
     <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">wave</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="audio_add">
+<a class="viewcode-back" href="../../_autosummary/muprocdurham.sound.audio_add.html#muprocdurham.sound.audio_add">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">audio_add</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">audio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_total_time</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">start_time</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="c1"># extend audio if required</span>
+    <span class="n">required_length</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">offset</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">wave</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_total_time</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">audio</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">audio</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">required_length</span><span class="p">:</span>
+        <span class="n">new_audio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">required_length</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">audio</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_audio</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">audio</span><span class="p">)]</span> <span class="o">=</span> <span class="n">audio</span>
+        <span class="n">audio</span> <span class="o">=</span> <span class="n">new_audio</span>
+    <span class="c1"># add audio</span>
+    <span class="n">audio</span><span class="p">[</span><span class="n">offset</span><span class="p">:</span><span class="n">offset</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">wave</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">wave</span>
+    <span class="k">return</span> <span class="n">audio</span></div>
 
 
 

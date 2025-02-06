@@ -94,12 +94,7 @@ to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="practical-sequential-models">
 <span id="sphx-glr-auto-examples-practical-sequential-models-py"></span><h1>Practical: Sequential Models<a class="headerlink" href="#practical-sequential-models" title="Link to this heading"></a></h1>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install muprocdurham  # latest release</span>
-<span class="c1"># !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@main  # latest main version (typically same as release)</span>
-<span class="c1"># !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@dev  # latest dev version</span>
-
-
-<span class="c1"># # Practical: Sequential Models</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Practical: Sequential Models</span>
 
 <span class="c1"># ## Reading in a Sequence</span>
 
@@ -107,20 +102,24 @@ to download the full example code.</p>
 <span class="c1">#</span>
 <span class="c1"># *Hints:*</span>
 <span class="c1"># - ``score.flat`` is an iterable over *all* elements in the score</span>
-<span class="c1"># - ``m21.note.Note`` and ``m21.chord.Chord`` are bases classes for single notes and chords respectively</span>
+<span class="c1"># - ``m21.note.Note`` and ``m21.chord.Chord`` are base classes for single notes and chords respectively</span>
 <span class="c1"># - use ``element.tie`` with [``m21.tie.Tie``](https://web.mit.edu/music21/doc/moduleReference/moduleTie.html) to check for tied notes</span>
 <span class="c1"># - use ``element.offset`` to check for time constraints.</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">muprocdurham</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">music21</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">m21</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">pitch_sequence</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">ignore_chords</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="n">mpd</span><span class="o">.</span><span class="n">seed_everything</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pitch_sequence</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">ignore_chords</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">pitches</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
     <span class="c1"># traverse all elements in the score</span>
     <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">score</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">m21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">)</span> <span class="ow">and</span> <span class="n">element</span><span class="o">.</span><span class="n">tie</span> <span class="o">!=</span> <span class="n">m21</span><span class="o">.</span><span class="n">tie</span><span class="o">.</span><span class="n">Tie</span><span class="p">(</span><span class="s2">&quot;stop&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">m21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">tie</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">element</span><span class="o">.</span><span class="n">tie</span> <span class="o">==</span> <span class="n">m21</span><span class="o">.</span><span class="n">tie</span><span class="o">.</span><span class="n">Tie</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)):</span>
             <span class="c1"># check for min/max time</span>
             <span class="k">if</span> <span class="n">min_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">element</span><span class="o">.</span><span class="n">offset</span> <span class="o">&lt;</span> <span class="n">min_time</span><span class="p">:</span>
                 <span class="k">continue</span>
@@ -203,9 +202,9 @@ to download the full example code.</p>
        55, 60, 67, 55, 60, 67, 43, 50, 55, 60, 65, 55, 60, 65, 43, 50, 55,
        60, 65, 55, 60, 65, 43, 50, 55, 59, 65, 55, 59, 65, 43, 50, 55, 59,
        65, 55, 59, 65, 36, 48, 55, 58, 64, 55, 58, 64, 36, 48, 55, 58, 64,
-       55, 58, 64, 36, 48, 53, 57, 60, 48, 65, 60, 57, 60, 57, 53, 57, 53,
-       50, 53, 50, 36, 47, 67, 71, 74, 47, 77, 74, 71, 74, 71, 67, 71, 62,
-       65, 64, 62])
+       55, 58, 64, 36, 48, 53, 57, 60, 65, 60, 57, 60, 57, 53, 57, 53, 50,
+       53, 50, 36, 47, 67, 71, 74, 77, 74, 71, 74, 71, 67, 71, 62, 65, 64,
+       62])
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">NGramModel</span><span class="p">:</span>
@@ -297,7 +296,7 @@ to download the full example code.</p>
 <span class="c1"># *Hint:* Use the provided functions for creating the matrices and plotting them.</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_Practical_Sequential_Models_001.png" srcset="../_images/sphx_glr_Practical_Sequential_Models_001.png" alt="Practical Sequential Models" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(0,): 103, (4,): 61, (7,): 106, (2,): 71, (9,): 50, (5,): 59, (11,): 42, (6,): 14, (10,): 10, (1,): 4, (8,): 4, (3,): 6}
+<img src="../_images/sphx_glr_Practical_Sequential_Models_001.png" srcset="../_images/sphx_glr_Practical_Sequential_Models_001.png" alt="Practical Sequential Models" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(0,): 102, (4,): 61, (7,): 106, (2,): 71, (9,): 50, (5,): 59, (11,): 41, (6,): 14, (10,): 10, (1,): 4, (8,): 4, (3,): 6}
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">muprocdurham.ngram</span><span class="w"> </span><span class="kn">import</span> <span class="n">bigram_matrix_from_model</span><span class="p">,</span> <span class="n">show_bigram_matrix</span>
@@ -363,10 +362,7 @@ Bigram Counts (rows: from; columns: to)
     <span class="n">measure</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">EnharmonicPitch</span><span class="p">(</span><span class="n">pitch</span><span class="p">)),</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;16th&quot;</span><span class="p">))</span>
 <span class="n">part</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure</span><span class="p">)</span>
 <span class="n">score</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">score</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="k">except</span> <span class="n">m21</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">subConverters</span><span class="o">.</span><span class="n">SubConverterException</span><span class="p">:</span>
-    <span class="n">score</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">mpd</span><span class="o">.</span><span class="n">show_stream</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
 
 
 <span class="c1"># Assume the unigram and bigram counts are used in a multi-order *n*-gram model that always uses the highest-order *n*-gram possible (the one with largest n) for predicting the next note. If the melody had been generated using this model, and ignoring the octave (i.e. treating the notes as pitch classes), what are the probabilities for the respective notes?</span>
@@ -374,7 +370,9 @@ Bigram Counts (rows: from; columns: to)
 <span class="c1"># *Hint:* You can use the output of following to check your solution.</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{0.0} &lt;music21.stream.Part 0x7f95cc44be80&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/MuProcDurham/MuProcDurham/muprocdurham/__init__.py:44: UserWarning: Cannot show score, falling back to text representation.
+  warn(&quot;Cannot show score, falling back to text representation.&quot;, UserWarning)
+{0.0} &lt;music21.stream.Part 0x7f7a326d3130&gt;
     {0.0} &lt;music21.stream.Measure 0 offset=0.0&gt;
         {0.0} &lt;music21.note.Note G&gt;
         {0.25} &lt;music21.note.Note E&gt;
@@ -502,7 +500,7 @@ E: (0.23529411764705882, 1.0)
 <span class="n">show_bigram_matrix</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="n">minmax</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_Practical_Sequential_Models_004.png" srcset="../_images/sphx_glr_Practical_Sequential_Models_004.png" alt="Practical Sequential Models" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.243 seconds)</p>
+<img src="../_images/sphx_glr_Practical_Sequential_Models_004.png" srcset="../_images/sphx_glr_Practical_Sequential_Models_004.png" alt="Practical Sequential Models" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.061 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-practical-sequential-models-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/aa8b15b9f3599bb330a10cf04949faa8/Practical_Sequential_Models.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">Practical_Sequential_Models.ipynb</span></code></a></p>

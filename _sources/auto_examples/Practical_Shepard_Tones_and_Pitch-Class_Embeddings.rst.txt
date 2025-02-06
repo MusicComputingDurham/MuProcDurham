@@ -21,27 +21,7 @@
 Shepard Tones
 =============
 
-.. GENERATED FROM PYTHON SOURCE LINES 6-15
-
-.. code-block:: Python
-
-
-    # In[ ]:
-
-
-    # !pip install muprocdurham  # latest release
-    # !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@main  # latest main version (typically same as release)
-    # !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@dev  # latest dev version
-
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 16-36
+.. GENERATED FROM PYTHON SOURCE LINES 8-30
 
 .. code-block:: Python
 
@@ -50,7 +30,9 @@ Shepard Tones
     import numpy as np
     import matplotlib.pyplot as plt
     from muprocdurham import sound as s
-    # !pip install umap-learn plotly  # if not alreay installed
+    from muprocdurham import seed_everything
+
+    seed_everything(42)
 
 
     # # Shepard Tones
@@ -72,7 +54,7 @@ Shepard Tones
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-46
+.. GENERATED FROM PYTHON SOURCE LINES 31-40
 
 .. code-block:: Python
 
@@ -103,7 +85,7 @@ Shepard Tones
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-66
+.. GENERATED FROM PYTHON SOURCE LINES 41-60
 
 .. code-block:: Python
 
@@ -144,7 +126,7 @@ Shepard Tones
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-93
+.. GENERATED FROM PYTHON SOURCE LINES 61-87
 
 .. code-block:: Python
 
@@ -221,7 +203,7 @@ Shepard Tones
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-122
+.. GENERATED FROM PYTHON SOURCE LINES 88-116
 
 .. code-block:: Python
 
@@ -270,7 +252,7 @@ Shepard Tones
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-142
+.. GENERATED FROM PYTHON SOURCE LINES 117-136
 
 .. code-block:: Python
 
@@ -305,7 +287,7 @@ Shepard Tones
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-161
+.. GENERATED FROM PYTHON SOURCE LINES 137-155
 
 .. code-block:: Python
 
@@ -345,7 +327,7 @@ Shepard Tones
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-171
+.. GENERATED FROM PYTHON SOURCE LINES 156-165
 
 Hints:
 ------
@@ -357,7 +339,7 @@ Hints:
 - you might want to add some extra octaves above/below so the full audible range is filled even after rising/falling
 - if you have two 1D arrays `a` and `b` with shapes `(n,)` and `(k,)`, respectively, then `a[:, None] * b[None, :]` gives you an array of shape `(n, k)` via broadcasting
 
-.. GENERATED FROM PYTHON SOURCE LINES 173-195
+.. GENERATED FROM PYTHON SOURCE LINES 167-189
 
 .. code-block:: Python
 
@@ -401,7 +383,7 @@ Hints:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 196-210
+.. GENERATED FROM PYTHON SOURCE LINES 190-204
 
 How many perfectly symmetric chords are there in 12-tone equal temperament?
 ---------------------------------------------------------------------------
@@ -418,7 +400,7 @@ Hints:
 - if you `from pitchtypes import Enharmonic`, you get the frequency of, say, a C4 with `Enharmonic.Pitch("C4").freq()` or `Enharmonic.Pitch(60).freq()`
 - to overlay sounds generated with the `sound` function, you can simply add them (they are just NumPy arrays with waveforms)
 
-.. GENERATED FROM PYTHON SOURCE LINES 212-229
+.. GENERATED FROM PYTHON SOURCE LINES 206-223
 
 .. code-block:: Python
 
@@ -455,7 +437,7 @@ Hints:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 230-236
+.. GENERATED FROM PYTHON SOURCE LINES 224-230
 
 How does the space that musical tones live in look like?
 --------------------------------------------------------
@@ -464,7 +446,7 @@ How does the space that musical tones live in look like?
 
 Many models of tonal space consider pitch classes, that is, they ignore the octave. There are music theoretic consideration to come up with such spaces, but in this practical, we will take a sound-based approach. Shepard tones are a great starting point because they are octave-invariant, so essentially the audible equivalent of a pitch class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 236-241
+.. GENERATED FROM PYTHON SOURCE LINES 230-235
 
 .. code-block:: Python
 
@@ -480,7 +462,7 @@ Many models of tonal space consider pitch classes, that is, they ignore the octa
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 242-257
+.. GENERATED FROM PYTHON SOURCE LINES 236-251
 
 .. code-block:: Python
 
@@ -517,7 +499,7 @@ Many models of tonal space consider pitch classes, that is, they ignore the octa
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 258-272
+.. GENERATED FROM PYTHON SOURCE LINES 252-266
 
 .. code-block:: Python
 
@@ -542,7 +524,7 @@ Many models of tonal space consider pitch classes, that is, they ignore the octa
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 273-284
+.. GENERATED FROM PYTHON SOURCE LINES 267-278
 
 .. code-block:: Python
 
@@ -571,11 +553,11 @@ Many models of tonal space consider pitch classes, that is, they ignore the octa
  .. code-block:: none
 
 
-    [<matplotlib.lines.Line2D object at 0x7f95cc65ace0>]
+    [<matplotlib.lines.Line2D object at 0x7f7a324e2da0>]
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 285-292
+.. GENERATED FROM PYTHON SOURCE LINES 279-286
 
 Hints:
 ------
@@ -585,7 +567,7 @@ Hints:
 - the `points` array should have shape `(12, n)`, where `n` is a larger number corresponding to the resolution of the spectrum
 - use `duration=0.1` for sound generation to reduce the number of dimensions
 
-.. GENERATED FROM PYTHON SOURCE LINES 294-305
+.. GENERATED FROM PYTHON SOURCE LINES 288-299
 
 .. code-block:: Python
 
@@ -613,7 +595,7 @@ Hints:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 306-321
+.. GENERATED FROM PYTHON SOURCE LINES 300-315
 
 .. code-block:: Python
 
@@ -650,7 +632,7 @@ Hints:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 322-332
+.. GENERATED FROM PYTHON SOURCE LINES 316-326
 
 .. code-block:: Python
 
@@ -676,7 +658,7 @@ Hints:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 333-359
+.. GENERATED FROM PYTHON SOURCE LINES 327-353
 
 .. code-block:: Python
 
@@ -713,7 +695,7 @@ Hints:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 360-402
+.. GENERATED FROM PYTHON SOURCE LINES 354-396
 
 .. code-block:: Python
 
@@ -766,7 +748,7 @@ Hints:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 403-413
+.. GENERATED FROM PYTHON SOURCE LINES 397-407
 
 What geometric shape is the product of two circles?
 ---------------------------------------------------
@@ -779,7 +761,7 @@ When looking at neighbouring pitch classes, what structure do you see in the pha
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 415-428
+.. GENERATED FROM PYTHON SOURCE LINES 409-422
 
 .. code-block:: Python
 
@@ -811,7 +793,7 @@ When looking at neighbouring pitch classes, what structure do you see in the pha
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 30.401 seconds)
+   **Total running time of the script:** (0 minutes 29.961 seconds)
 
 
 .. _sphx_glr_download_auto_examples_Practical_Shepard_Tones_and_Pitch-Class_Embeddings.py:

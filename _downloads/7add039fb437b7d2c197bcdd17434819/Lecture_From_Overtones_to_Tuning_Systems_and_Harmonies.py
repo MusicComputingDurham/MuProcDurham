@@ -12,6 +12,9 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from pitchtypes import Enharmonic, Spelled
 from muprocdurham import sound as s
+import muprocdurham as mpd
+
+mpd.seed_everything(42)
 
 
 # # Spectrograms & Overtones

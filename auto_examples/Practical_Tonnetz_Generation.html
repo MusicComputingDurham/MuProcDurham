@@ -99,21 +99,19 @@ to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="tonnetz-generation">
 <span id="sphx-glr-auto-examples-practical-tonnetz-generation-py"></span><h1>Tonnetz Generation<a class="headerlink" href="#tonnetz-generation" title="Link to this heading"></a></h1>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install muprocdurham  # latest release</span>
-<span class="c1"># !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@main  # latest main version (typically same as release)</span>
-<span class="c1"># !pip install git+https://github.com/MusicComputingDurham/MuProcDurham.git@dev  # latest dev version</span>
-
-
-<span class="c1"># # Tonnetz Generation</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Tonnetz Generation</span>
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">patches</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">music21</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">m21</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">muprocdurham</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">muprocdurham.sound</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mps</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pitchtypes</span><span class="w"> </span><span class="kn">import</span> <span class="n">Spelled</span><span class="p">,</span> <span class="n">Enharmonic</span>
-<span class="c1"># !pip install pygame</span>
+
+<span class="n">mpd</span><span class="o">.</span><span class="n">seed_everything</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
 
 <span class="c1"># This practical is about using the Tonnetz as a starting point to generate music.</span>
@@ -308,7 +306,7 @@ to download the full example code.</p>
 <img src="../_images/sphx_glr_Practical_Tonnetz_Generation_002.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_002.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[C, G, D#, E]
 [C, G, G, C, A]
 
-[&lt;matplotlib.lines.Line2D object at 0x7f95c5bc9a50&gt;]
+[&lt;matplotlib.lines.Line2D object at 0x7f7a2b835c30&gt;]
 </pre></div>
 </div>
 </section>
@@ -351,13 +349,13 @@ to download the full example code.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">sample_path</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[1, -1]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[0, 1]
 [[ 0  0]
- [ 1  0]
- [ 1  1]
- [ 1  0]
- [ 2 -1]
- [ 2 -2]]
+ [-1  1]
+ [ 0  0]
+ [ 0 -1]
+ [ 1 -1]
+ [ 2 -1]]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
@@ -375,7 +373,7 @@ to download the full example code.</p>
 <span class="c1">#</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_003.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_003.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x7f95c58c49a0&gt;]
+<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_003.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_003.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x7f7a2580c3a0&gt;]
 </pre></div>
 </div>
 </section>
@@ -414,7 +412,7 @@ to download the full example code.</p>
 </div>
 <img src="../_images/sphx_glr_Practical_Tonnetz_Generation_004.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_004.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.9997254169637901 approx. 1
 
-&lt;matplotlib.legend.Legend object at 0x7f95c5a38a60&gt;
+&lt;matplotlib.legend.Legend object at 0x7f7a256a0af0&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sample_path</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
@@ -442,7 +440,7 @@ to download the full example code.</p>
 <span class="c1"># Generate a number of paths and plot the distribution over their end points. This corresponds to a Monte Carlo approximation of the distribution defined by the Tonal Diffusion Model.</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_005.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_005.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x7f95cc24b760&gt;]
+<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_005.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_005.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x7f7a25917400&gt;]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
@@ -470,7 +468,7 @@ to download the full example code.</p>
 <span class="c1">#</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_006.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_006.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection object at 0x7f95c6419ea0&gt;
+<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_006.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_006.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection object at 0x7f7a2b3bef80&gt;
 </pre></div>
 </div>
 </section>
@@ -525,9 +523,9 @@ to download the full example code.</p>
 <span class="c1">#</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_007.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_007.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[C, C, A#, C, F, C, F, D, G, C]
+<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_007.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_007.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[C, C, C, C, C, D, G, G, F, C, G, G, C]
 
-[&lt;matplotlib.lines.Line2D object at 0x7f95cbe4ee30&gt;]
+[&lt;matplotlib.lines.Line2D object at 0x7f7a2b2efbe0&gt;]
 </pre></div>
 </div>
 </section>
@@ -563,8 +561,8 @@ to download the full example code.</p>
 <span class="nb">print</span><span class="p">([</span><span class="n">Enharmonic</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">melody</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[62, 63, 67, 72, 67, 69, 61, 69, 69, 62, 62, 64, 69, 71, 66, 62, 67, 65, 64, 62]
-[D4, D#4, G4, C5, G4, A4, C#4, A4, A4, D4, D4, E4, A4, B4, F#4, D4, G4, F4, E4, D4]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[65, 67, 67, 72, 65, 60, 65, 62, 67, 67, 67, 62, 62, 67, 67, 67, 72]
+[F4, G4, G4, C5, F4, C4, F4, D4, G4, G4, G4, D4, D4, G4, G4, G4, C5]
 </pre></div>
 </div>
 </section>
@@ -596,7 +594,7 @@ On your own machine:
 <span class="nb">print</span><span class="p">([</span><span class="n">Enharmonic</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">melody</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[G4, C5, G#4, C5, A#4, F4, G4, G4, G4, G4, C5, G4, C5, A4, C5, F4, C4]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[C4, F4, A#4, A4, D4, A4, E4, E4, A4, C5, G4, B4, C5, G4, F4, C4, F4, G4, A4, A4]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># NCC</span>
@@ -620,14 +618,43 @@ On your own machine:
     <span class="n">n</span><span class="o">.</span><span class="n">quarterLength</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span>
     <span class="n">stream</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-<span class="c1"># stream.show()</span>
-<span class="c1"># m21.midi.realtime.StreamPlayer(stream).play()</span>
+<span class="n">mpd</span><span class="o">.</span><span class="n">show_stream</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+<span class="n">mpd</span><span class="o">.</span><span class="n">play_stream</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
 <span class="c1"># ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
 
 
 <span class="c1"># ## Rhythm</span>
 
 <span class="c1"># Below is a function that generates a very simple rhythm as a sequence of `(duration, beat)` pairs, where `duration` is the event&#39;s duration in quarter beats and `beat` indicates whether the event is a note (`True`) or a rest (`False`). Use this to add a rhythm to the melody.</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/MuProcDurham/MuProcDurham/muprocdurham/__init__.py:44: UserWarning:
+
+Cannot show score, falling back to text representation.
+
+{0.0} &lt;music21.note.Note C&gt;
+{0.25} &lt;music21.note.Note F&gt;
+{0.5} &lt;music21.note.Note B-&gt;
+{0.75} &lt;music21.note.Note A&gt;
+{1.0} &lt;music21.note.Note D&gt;
+{1.25} &lt;music21.note.Note A&gt;
+{1.5} &lt;music21.note.Note E&gt;
+{1.75} &lt;music21.note.Note E&gt;
+{2.0} &lt;music21.note.Note A&gt;
+{2.25} &lt;music21.note.Note C&gt;
+{2.5} &lt;music21.note.Note G&gt;
+{2.75} &lt;music21.note.Note B&gt;
+{3.0} &lt;music21.note.Note C&gt;
+{3.25} &lt;music21.note.Note G&gt;
+{3.5} &lt;music21.note.Note F&gt;
+{3.75} &lt;music21.note.Note C&gt;
+{4.0} &lt;music21.note.Note F&gt;
+{4.25} &lt;music21.note.Note G&gt;
+{4.5} &lt;music21.note.Note A&gt;
+{4.75} &lt;music21.note.Note A&gt;
+/home/runner/work/MuProcDurham/MuProcDurham/muprocdurham/__init__.py:52: UserWarning:
+
+Cannot play stream
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_rhythm</span><span class="p">(</span><span class="n">n_bars</span><span class="p">,</span> <span class="n">split_prob</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">beat_prob</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">max_splits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">min_splits</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">final</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -661,13 +688,13 @@ On your own machine:
         <span class="n">overall_rhythm</span> <span class="o">+=</span> <span class="n">new_rhythm</span>
     <span class="c1"># append one final closing beat</span>
     <span class="k">if</span> <span class="n">final</span><span class="p">:</span>
-        <span class="n">overall_rhythm</span> <span class="o">+=</span> <span class="p">[(</span><span class="mi">4</span><span class="p">,</span> <span class="kc">True</span><span class="p">)]</span>
+        <span class="n">overall_rhythm</span> <span class="o">+=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)]</span>
     <span class="k">return</span> <span class="n">overall_rhythm</span>
 
 <span class="n">get_rhythm</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[(1.0, True), (0.25, True), (0.25, False), (0.5, True), (1.0, True), (0.25, True), (0.25, False), (0.5, True), (4, True)]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[(1.0, False), (1.0, True), (1.0, True), (0.5, False), (0.25, True), (0.25, True), (1, True)]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rhythm_and_melody</span><span class="p">(</span><span class="n">rhythm</span><span class="p">,</span> <span class="n">melody</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">play</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_m21</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -676,7 +703,14 @@ On your own machine:
         <span class="n">stream</span> <span class="o">=</span> <span class="n">m21</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">Stream</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">stream</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">melody</span><span class="p">,</span> <span class="n">rhythm</span><span class="p">):</span>
+    <span class="n">m_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">melody</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">rhythm</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">b</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m_iter</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melody too short!&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
         <span class="k">if</span> <span class="n">use_m21</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">b</span><span class="p">:</span>
                 <span class="n">n</span> <span class="o">=</span> <span class="n">m21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
@@ -685,7 +719,7 @@ On your own machine:
             <span class="n">n</span><span class="o">.</span><span class="n">quarterLength</span> <span class="o">=</span> <span class="n">d</span>
             <span class="n">stream</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">f</span> <span class="o">=</span> <span class="n">Enharmonic</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">freq</span><span class="p">()</span> <span class="k">if</span> <span class="n">b</span> <span class="k">else</span> <span class="mi">440</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">Enharmonic</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">freq</span><span class="p">()</span> <span class="k">if</span> <span class="n">b</span> <span class="k">else</span> <span class="mi">1</span>
             <span class="n">quarterduration</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># default speed is 120 in music21</span>
             <span class="n">n</span> <span class="o">=</span> <span class="n">mps</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">mps</span><span class="o">.</span><span class="n">sound</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">quarterduration</span> <span class="o">*</span> <span class="n">d</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">b</span><span class="p">:</span>
@@ -694,9 +728,9 @@ On your own machine:
                 <span class="n">stream</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>  <span class="c1"># silence</span>
     <span class="k">if</span> <span class="n">use_m21</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
-            <span class="n">stream</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            <span class="n">mpd</span><span class="o">.</span><span class="n">show_stream</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">play</span><span class="p">:</span>
-            <span class="n">m21</span><span class="o">.</span><span class="n">midi</span><span class="o">.</span><span class="n">realtime</span><span class="o">.</span><span class="n">StreamPlayer</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+            <span class="n">mpd</span><span class="o">.</span><span class="n">play_stream</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">stream</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
@@ -704,13 +738,14 @@ On your own machine:
         <span class="k">if</span> <span class="n">play</span><span class="p">:</span>
             <span class="n">mps</span><span class="o">.</span><span class="n">audio</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
     <span class="c1"># ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
-
-<span class="n">melody</span> <span class="o">=</span> <span class="n">get_melody</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">,</span> <span class="n">min_len</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_len</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">melody</span> <span class="o">=</span> <span class="n">get_melody</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">,</span> <span class="n">min_len</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">max_len</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">rhythm</span> <span class="o">=</span> <span class="n">get_rhythm</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">([</span><span class="n">Enharmonic</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">melody</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rhythm</span><span class="p">)</span>
-<span class="c1"># rhythm_and_melody(rhythm=rhythm, melody=melody)</span>
-<span class="c1"># rhythm_and_melody(rhythm=rhythm, melody=melody, use_m21=True)</span>
+<span class="n">rhythm_and_melody</span><span class="p">(</span><span class="n">rhythm</span><span class="o">=</span><span class="n">rhythm</span><span class="p">,</span> <span class="n">melody</span><span class="o">=</span><span class="n">melody</span><span class="p">)</span>
+<span class="n">rhythm_and_melody</span><span class="p">(</span><span class="n">rhythm</span><span class="o">=</span><span class="n">rhythm</span><span class="p">,</span> <span class="n">melody</span><span class="o">=</span><span class="n">melody</span><span class="p">,</span> <span class="n">use_m21</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
 <span class="c1"># ## Random Melody</span>
@@ -718,8 +753,44 @@ On your own machine:
 <span class="c1"># Generate a random melody and compare its character to the melody generated using the Tonnetz.</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[C4, A4, A4, C#4, F#4, A4, F#4, A4, D4, D4, A4, A4, G4, D4, E4, E4, A4, D4, G4, F4]
-[(0.5, True), (0.5, False), (0.5, True), (0.25, True), (0.25, False), (1.0, True), (1.0, True), (0.25, False), (0.25, True), (0.5, False), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.5, True), (0.25, True), (0.25, True), (0.25, False), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.5, True), (1.0, True), (0.5, True), (0.25, False), (0.25, True), (1.0, True), (0.5, True), (0.5, False), (1.0, True), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (4, True)]
+<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_008.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_008.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[G4, G#4, C5, F4, C4, C#4, G#4, C#4, G#4, C5, F4, A4, D4, E4, D4, A4, G4, D4, A4, C5, G4, A#4, C5, F4, G4, E4, A4, A4, D4, G4, D4, G4, D4, G4, D#4, E4, A4, D4, D4, D4, G4, C5, A4, A4, E4, A4, D4, G4, G4, E4, B4, F#4, A4, D4, G4, G4, D#4, C4, F4, G4, C5, D4, G4, C5, F4, F4, C4, G4, G4, A4, D4, G4, A4, A4, D4, G4, D4, G4, F4, A4, D4, A4, D4, C4, G4, C5, D4, D4, G4, C5]
+[(1.0, True), (0.5, True), (0.25, True), (0.25, True), (1.0, True), (0.25, True), (0.25, True), (0.5, True), (0.5, True), (0.5, True), (0.5, False), (0.25, True), (0.25, True), (0.25, True), (0.25, True), (0.5, True), (1.0, True), (0.25, False), (0.25, True), (0.25, True), (0.25, True), (1.0, True), (0.5, False), (0.25, True), (0.25, True), (0.5, False), (0.5, True), (0.5, False), (0.5, True), (0.5, False), (0.5, True), (1.0, False), (0.5, True), (0.5, True), (1, True)]
+&lt;IPython.lib.display.Audio object&gt;
+{0.0} &lt;music21.note.Note G&gt;
+{1.0} &lt;music21.note.Note G#&gt;
+{1.5} &lt;music21.note.Note C&gt;
+{1.75} &lt;music21.note.Note F&gt;
+{2.0} &lt;music21.note.Note C&gt;
+{3.0} &lt;music21.note.Note C#&gt;
+{3.25} &lt;music21.note.Note G#&gt;
+{3.5} &lt;music21.note.Note C#&gt;
+{4.0} &lt;music21.note.Note G#&gt;
+{4.5} &lt;music21.note.Note C&gt;
+{5.0} &lt;music21.note.Rest rest&gt;
+{5.5} &lt;music21.note.Note F&gt;
+{5.75} &lt;music21.note.Note A&gt;
+{6.0} &lt;music21.note.Note D&gt;
+{6.25} &lt;music21.note.Note E&gt;
+{6.5} &lt;music21.note.Note D&gt;
+{7.0} &lt;music21.note.Note A&gt;
+{8.0} &lt;music21.note.Rest rest&gt;
+{8.25} &lt;music21.note.Note G&gt;
+{8.5} &lt;music21.note.Note D&gt;
+{8.75} &lt;music21.note.Note A&gt;
+{9.0} &lt;music21.note.Note C&gt;
+{10.0} &lt;music21.note.Rest rest&gt;
+{10.5} &lt;music21.note.Note G&gt;
+{10.75} &lt;music21.note.Note B-&gt;
+{11.0} &lt;music21.note.Rest rest&gt;
+{11.5} &lt;music21.note.Note C&gt;
+{12.0} &lt;music21.note.Rest rest&gt;
+{12.5} &lt;music21.note.Note F&gt;
+{13.0} &lt;music21.note.Rest rest&gt;
+{13.5} &lt;music21.note.Note G&gt;
+{14.0} &lt;music21.note.Rest rest&gt;
+{15.0} &lt;music21.note.Note E&gt;
+{15.5} &lt;music21.note.Note A&gt;
+{16.0} &lt;music21.note.Note A&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv</span>
@@ -737,10 +808,10 @@ On your own machine:
 <span class="c1"># - For a given chord, the corresponding scale can be used to generate additional notes and filling patterns (as above but better matching the current harmony).</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_008.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_008.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.lib.display.Audio object&gt;
+<img src="../_images/sphx_glr_Practical_Tonnetz_Generation_009.png" srcset="../_images/sphx_glr_Practical_Tonnetz_Generation_009.png" alt="Practical Tonnetz Generation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.lib.display.Audio object&gt;
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.264 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.842 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-practical-tonnetz-generation-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/150f410b9a8fc74dc01762eb8ddc3fae/Practical_Tonnetz_Generation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">Practical_Tonnetz_Generation.ipynb</span></code></a></p>
