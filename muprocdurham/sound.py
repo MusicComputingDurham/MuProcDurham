@@ -54,6 +54,20 @@ def audio(wave, fade=True):
     IPython.display.display(IPython.display.Audio(data=wave, rate=sampling_rate))
 
 
+def audio_add(wave, start_time, audio=None, min_total_time=0):
+    offset = int(start_time * sampling_rate)
+    # extend audio if required
+    required_length = max(offset + len(wave), int(min_total_time * sampling_rate))
+    if audio is None or len(audio) < required_length:
+        new_audio = np.zeros(required_length)
+        if audio is not None:
+            new_audio[:len(audio)] = audio
+        audio = new_audio
+    # add audio
+    audio[offset:offset + len(wave)] += wave
+    return audio
+
+
 def sound(func, phases=0., duration=1.):
     # time vector
     time = np.arange(0, duration, 1 / sampling_rate)

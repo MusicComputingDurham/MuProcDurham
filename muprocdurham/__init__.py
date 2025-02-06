@@ -1,10 +1,15 @@
 import re
 import random
+from warnings import warn
+
 import numpy as np
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'  # supress pygame message before import
 import pygame
 import music21 as m21
+
+# check for most up-to-date version
+import muprocdurham.version_check
 
 # see https://github.com/DCMLab/standards/blob/main/harmony.py
 dcml_harmony_regex = re.compile("".join(r"""
@@ -36,6 +41,7 @@ def show_stream(stream):
     try:
         stream.show()
     except m21.converter.subConverters.SubConverterException:
+        warn("Cannot show score, falling back to text representation.", UserWarning)
         stream.show('t')
 
 
@@ -43,4 +49,4 @@ def play_stream(stream):
     try:
         m21.midi.realtime.StreamPlayer(stream).play()
     except pygame.error:
-        print("Cannot play stream")
+        warn("Cannot play stream", UserWarning)
