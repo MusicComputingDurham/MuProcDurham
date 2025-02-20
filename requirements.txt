@@ -12,3 +12,4 @@ pygame
 pitchtypes
 triangularmap
 corpusinterface
+pitchscapes
