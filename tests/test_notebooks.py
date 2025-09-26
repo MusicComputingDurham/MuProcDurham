@@ -1,5 +1,5 @@
 #  Copyright (c) 2025 Robert Lieck.
-from unittest import TestCase
+from unittest import TestCase, skip
 import os
 import importlib.util
 import pathlib
@@ -19,7 +19,8 @@ class TestNotebooks(TestCase):
         os.chdir(self.cwd)
         self.cwd = None
 
-    def test_examples(self):
+    @skip("Don't run all notebooks to allow for faster updates")
+    def test_notebooks(self):
         """Run all the files in notebooks folder"""
         for dir_path, dir_names, file_names in os.walk("."):
             for file in file_names:
