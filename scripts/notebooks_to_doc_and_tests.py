@@ -1,3 +1,5 @@
+import os
+
 from pathlib import Path
 import re
 import shutil
@@ -50,7 +52,7 @@ def create_rst(rst_out, title, stem, html_dir, ipynb_dir):
  * `{stem}_BLANKS.ipynb <../{ipynb_dir}/{stem}_BLANKS.ipynb>`_ (notebook with BLANKS)"""
 
     rst += rf"""
- * You can find any additional files (for all notebooks) `here <../assets>`_ or as a zip file here: 
+ * You can find any additional files (for all notebooks) `here <../assets/index.html>`_ or as a zip file here:
    `assets.zip <../assets.zip>`_
 
 --------------------
@@ -65,6 +67,27 @@ def create_rst(rst_out, title, stem, html_dir, ipynb_dir):
               referrerpolicy="no-referrer">
       </iframe>"""
     rst_out.write_text(rst, encoding="utf-8")
+
+
+def write_asset_index(out, files):
+    html = r"""<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>File Listing</title>
+</head>
+<body>
+  <h1>Files</h1>
+  <ul>"""
+    for f in files:
+        html += fr"""
+    <li><a href="{f}">{f}</a></li>
+"""
+    html += r"""
+  </ul>
+</body>
+</html>"""
+    out.write_text(html)
 
 
 def main():
@@ -161,12 +184,22 @@ def main():
 
     # copy non-ipynb files
     print("Copying assets:")
+    asset_files = []
     for f in other_files:
         print(f"    {f.name}")
+        asset_files.append(f.name)
         for dest in [doc_assets_dir / f.name, test_nb_dir / f.name]:
             shutil.copyfile(f, dest)
+    # remove olde index.html if it exists
+    index_html = doc_assets_dir / 'index.html'
+    if os.path.exists(index_html):
+        os.remove(index_html)
+    # zip assets
     print("Zipping assets")
     shutil.make_archive(doc_extra_dir / "assets", "zip", doc_assets_dir)
+    # create new index.html
+    print("Writing assets index.html")
+    write_asset_index(out=index_html, files=asset_files)
     print("DONE")
 
 
