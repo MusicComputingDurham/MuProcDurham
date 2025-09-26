@@ -8,6 +8,7 @@ Welcome to MuProcDurham's documentation!
    :caption: Contents:
 
    auto_examples/index.rst
+   notebook_gallery
    api_summary
 
 .. Indices and tables
