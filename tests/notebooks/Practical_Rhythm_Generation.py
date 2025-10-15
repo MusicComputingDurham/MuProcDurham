@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+from tests.notebooks.util import get_ipython
 
 # # Practical: Rhythm Generation
 
@@ -460,4 +461,3 @@ mps.audio(melody)
 music = mps.render(mps.audio_add(wave=beat, audio=melody / 3, start_time=0))
 mps.spectrogram(music, ylim=2500)
 mps.audio(music)
-

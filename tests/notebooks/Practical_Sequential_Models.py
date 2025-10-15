@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+from tests.notebooks.util import get_ipython
 
 # # Practical: Sequential Models
 
@@ -345,4 +346,3 @@ n_gram_model.fill_alphabet()
 
 mat, minmax = bigram_matrix_from_model(n_gram_model)
 show_bigram_matrix(mat, minmax=minmax, names=True)
-

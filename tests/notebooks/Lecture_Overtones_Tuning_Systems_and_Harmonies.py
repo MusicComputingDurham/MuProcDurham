@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+from tests.notebooks.util import get_ipython
 
 # # Lecture: Overtones, Tuning Systems and Harmonies
 
@@ -338,4 +339,3 @@ for func in [
     wave = s.render(wave)
     s.spectrogram(wave, ylim=1000)
     s.audio(wave)
-

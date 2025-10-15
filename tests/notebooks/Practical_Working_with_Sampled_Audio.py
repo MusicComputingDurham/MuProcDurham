@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+from tests.notebooks.util import get_ipython
 
 # # Practical: Working with sampled audio
 # 
@@ -798,4 +799,3 @@ ipd.Audio(drum_x[::-1], rate=drum_Fs)
 
 
 dir(librosa.feature)
-

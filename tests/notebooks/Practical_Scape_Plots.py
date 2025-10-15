@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+from tests.notebooks.util import get_ipython
 
 # # Practical: Scape Plots
 
@@ -519,4 +520,3 @@ for prior_counts in [0, 1, 10]:
         print(v1.round(3))
         print(v2.round(3))
         print(v3.round(3))
-

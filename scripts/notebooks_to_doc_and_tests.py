@@ -27,7 +27,13 @@ def convert(nb_path, py_out=None, html_out=None):
     nb = nbformat.read(nb_path, as_version=4)
     # ---- .py ----
     if py_out is not None:
+        # convert NB to script
         py_code, _ = PythonExporter().from_notebook_node(nb)
+        # inject import to fix/fake IPython magic in scripts
+        py_code = py_code.splitlines()
+        py_code = py_code[:2] + ["from tests.notebooks.util import get_ipython"] + py_code[2:]
+        py_code = "\n".join(py_code)
+        # write
         py_out.write_text(py_code, encoding="utf-8")
     # ---- .html ----
     if html_out is not None:

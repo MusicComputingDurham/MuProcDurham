@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+from tests.notebooks.util import get_ipython
 
 # # Practical: CYK Parsing
 
@@ -461,4 +462,3 @@ print(grammar.chart.pretty())
 trees = grammar.get_trees()
 print(f"{len(trees)} possible parse trees")
 print(cat_pretty(trees, crosses=True, grid_off=True))
-

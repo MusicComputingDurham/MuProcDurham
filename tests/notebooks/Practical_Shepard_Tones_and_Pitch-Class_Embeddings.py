@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+from tests.notebooks.util import get_ipython
 
 # # Practical: Shepard Tones & PC Embeddings
 
@@ -389,4 +390,3 @@ for ax, (x, y) in zip(axs, [
     ax.plot(x, y, 'o-')
     for x_, y_, l in zip(x, y, pitch_classes[cycle]):
         ax.text(x_, y_, l)
-
