@@ -15,6 +15,8 @@ Here is a list of notebooks:
  * `Practical: Shepard Tones & PC Embeddings (BLANKS) <notebooks_rst/Practical_Shepard_Tones_and_Pitch-Class_Embeddings_BLANKS.html>`_
  * `Practical: Tonnetz Generation <notebooks_rst/Practical_Tonnetz_Generation.html>`_
  * `Practical: Tonnetz Generation (BLANKS) <notebooks_rst/Practical_Tonnetz_Generation_BLANKS.html>`_
+ * `Practical: Working with sampled audio <notebooks_rst/Practical_Working_with_Sampled_Audio.html>`_
+ * `Practical: Working with sampled audio (BLANKS) <notebooks_rst/Practical_Working_with_Sampled_Audio_BLANKS.html>`_
 
 .. toctree::
    :hidden:
@@ -32,3 +34,5 @@ Here is a list of notebooks:
    /notebooks_rst/Practical_Shepard_Tones_and_Pitch-Class_Embeddings_BLANKS
    /notebooks_rst/Practical_Tonnetz_Generation
    /notebooks_rst/Practical_Tonnetz_Generation_BLANKS
+   /notebooks_rst/Practical_Working_with_Sampled_Audio
+   /notebooks_rst/Practical_Working_with_Sampled_Audio_BLANKS

@@ -3,7 +3,7 @@ Practical: Scape Plots
 
  * `Practical_Scape_Plots.html <../notebooks_html/Practical_Scape_Plots.html>`_ (view html)
  * `Practical_Scape_Plots.ipynb <../notebooks_ipynb/Practical_Scape_Plots.ipynb>`_ (notebook)
- * You can find any additional files (for all notebooks) `here <../assets>`_ or as a zip file here: 
+ * You can find any additional files (for all notebooks) `here <../assets/index.html>`_ or as a zip file here:
    `assets.zip <../assets.zip>`_
 
 --------------------

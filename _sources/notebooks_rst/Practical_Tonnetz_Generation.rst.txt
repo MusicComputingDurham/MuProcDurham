@@ -3,7 +3,7 @@ Practical: Tonnetz Generation
 
  * `Practical_Tonnetz_Generation.html <../notebooks_html/Practical_Tonnetz_Generation.html>`_ (view html)
  * `Practical_Tonnetz_Generation.ipynb <../notebooks_ipynb/Practical_Tonnetz_Generation.ipynb>`_ (notebook)
- * You can find any additional files (for all notebooks) `here <../assets>`_ or as a zip file here: 
+ * You can find any additional files (for all notebooks) `here <../assets/index.html>`_ or as a zip file here:
    `assets.zip <../assets.zip>`_
 
 --------------------

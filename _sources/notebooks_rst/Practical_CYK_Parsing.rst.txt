@@ -3,7 +3,7 @@ Practical: CYK Parsing
 
  * `Practical_CYK_Parsing.html <../notebooks_html/Practical_CYK_Parsing.html>`_ (view html)
  * `Practical_CYK_Parsing.ipynb <../notebooks_ipynb/Practical_CYK_Parsing.ipynb>`_ (notebook)
- * You can find any additional files (for all notebooks) `here <../assets>`_ or as a zip file here: 
+ * You can find any additional files (for all notebooks) `here <../assets/index.html>`_ or as a zip file here:
    `assets.zip <../assets.zip>`_
 
 --------------------

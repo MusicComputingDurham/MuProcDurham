@@ -3,7 +3,7 @@ Practical: Sequential Models
 
  * `Practical_Sequential_Models.html <../notebooks_html/Practical_Sequential_Models.html>`_ (view html)
  * `Practical_Sequential_Models.ipynb <../notebooks_ipynb/Practical_Sequential_Models.ipynb>`_ (notebook)
- * You can find any additional files (for all notebooks) `here <../assets>`_ or as a zip file here: 
+ * You can find any additional files (for all notebooks) `here <../assets/index.html>`_ or as a zip file here:
    `assets.zip <../assets.zip>`_
 
 --------------------
