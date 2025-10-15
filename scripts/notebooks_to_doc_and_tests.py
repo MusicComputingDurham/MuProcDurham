@@ -178,6 +178,7 @@ def main():
     for t in toc_tree:
         nb_gallery += "\n   " + t
     print("DONE")
+    nb_gallery += "\n"
 
     # write gallery file
     (doc_dir / "notebook_gallery.rst").write_text(nb_gallery, encoding="utf-8")
