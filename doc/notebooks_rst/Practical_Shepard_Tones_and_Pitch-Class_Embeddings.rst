@@ -3,7 +3,7 @@ Practical: Shepard Tones & PC Embeddings
 
  * `Practical_Shepard_Tones_and_Pitch-Class_Embeddings.html <../notebooks_html/Practical_Shepard_Tones_and_Pitch-Class_Embeddings.html>`_ (view html)
  * `Practical_Shepard_Tones_and_Pitch-Class_Embeddings.ipynb <../notebooks_ipynb/Practical_Shepard_Tones_and_Pitch-Class_Embeddings.ipynb>`_ (notebook)
- * You can find any additional files (for all notebooks) `here <../assets>`_ or as a zip file here: 
+ * You can find any additional files (for all notebooks) `here <../assets/index.html>`_ or as a zip file here:
    `assets.zip <../assets.zip>`_
 
 --------------------

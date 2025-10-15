@@ -3,7 +3,7 @@ Practical: Tonnetz Generation (BLANKS)
 
  * `Practical_Tonnetz_Generation_BLANKS.html <../notebooks_html/Practical_Tonnetz_Generation_BLANKS.html>`_ (view html)
  * `Practical_Tonnetz_Generation_BLANKS.ipynb <../notebooks_ipynb/Practical_Tonnetz_Generation_BLANKS.ipynb>`_ (notebook)
- * You can find any additional files (for all notebooks) `here <../assets>`_ or as a zip file here: 
+ * You can find any additional files (for all notebooks) `here <../assets/index.html>`_ or as a zip file here:
    `assets.zip <../assets.zip>`_
 
 --------------------
