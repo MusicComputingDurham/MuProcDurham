@@ -152,14 +152,18 @@ print(scape[3.5, 4])
 # In[8]:
 
 
-def sample_scape(n, scape):
+def sample_scape(n, scape, time_normalise=True, p_normalise=False):
     # vvvvvvvvvvvvvvvvvvvvv
     tmap = None
     time_scaling = (scape.max_time - scape.min_time) / n
     time_offset = scape.min_time
     for start in range(n + 1):
         for end in range(start + 1, n + 1):
-            value = scape[start * time_scaling + time_offset, end * time_scaling + time_offset] / ((end - start) * time_scaling)
+            value = scape[start * time_scaling + time_offset, end * time_scaling + time_offset]
+            if time_normalise:
+                value = value / ((end - start) * time_scaling)
+            if p_normalise:
+                value = value / value.sum()
             if tmap is None:
                 try:
                     shape = value.shape
@@ -318,7 +322,7 @@ def get_branches(tmap, _start=None, _end=None):
 
 def plot_tree(tmap, label_tmap=None, ax=None,
               node_kwargs=(), branch_kwargs=(), label_kwargs=(),
-              x_y_from_start_end=None, axis_off=True, scale=(1, 1), set_lims=True):
+              x_y_from_start_end=None, axis_off=True, scale=(1, 1), set_lims=True, int_ticks=True):
     """
     Plot the nodes and branches from a tree encoded in a binary TMap.
 
@@ -363,6 +367,12 @@ def plot_tree(tmap, label_tmap=None, ax=None,
         lines.append(x_y_from_start_end(c_start, c_end))
     lines = np.array(lines) * [[x_scale, y_scale]]
     ax.plot(*lines.T, **dict(branch_kwargs))
+    # hide primary x-axis add secondary axis at bottom with automatic integer ticks
+    if int_ticks:
+        ax.tick_params(axis='x', which='both', bottom=False, labelbottom=False)
+        ax.spines['bottom'].set_visible(False)
+        secax = ax.secondary_xaxis('bottom', functions=(lambda x: x*tmap.n, lambda i: i/tmap.n))
+        secax.set_xlabel('Index')
     # layout
     if axis_off:
         ax.axis('off')
@@ -380,7 +390,7 @@ def binary_tree_from_chart(chart):
 # In[16]:
 
 
-def greedy_merge(points):
+def greedy_merge(points, dist=1., equal=0., small=0.05, verbose=False):
     # get start and end indices
     starts = np.arange(len(points))
     ends = starts + 1
@@ -394,20 +404,26 @@ def greedy_merge(points):
     while len(points) > 1:
         # compute distances based on values
         # vvvvvvvvvvvvvvvvvvv
-        distances = np.linalg.norm(points[:-1] - points[1:], axis=-1)
-        distances += 0. * ((ends[:-1] - starts[:-1]) - (ends[1:] - starts[1:]))  # prefer merging equally-sized trees
-        distances += 0.1 * ((ends[:-1] - starts[:-1]) + (ends[1:] - starts[1:]))  # prefer merging small trees
+        dist_cost = np.linalg.norm(points[:-1] - points[1:], axis=-1)            # Euclidean distance between PCDs
+        equal_cost = ((ends[:-1] - starts[:-1]) - (ends[1:] - starts[1:])) ** 2  # prefer merging equally-sized trees
+        small_cost = ((ends[:-1] - starts[:-1]) + (ends[1:] - starts[1:]))       # prefer merging small trees
+        distances = dist * dist_cost + equal * equal_cost + small * small_cost
         # ^^^^^^^^^^^^^^^^^^^
         # pick closest pair
         min_idx = np.argmin(distances)
         # get points and their start and end index
         p1, s1, e1 = points[min_idx], starts[min_idx], ends[min_idx]
         p2, s2, e2 = points[min_idx + 1], starts[min_idx + 1], ends[min_idx + 1]
+        assert s2 == e1, f"({s1}, {e1}) ({s2}, {e2})"
         # merge points using weighted average
         # vvvvvvvvvvvvvvvvvvv
         w1 = e1 - s1
         w2 = e2 - s2
         new_p = (w1 * p1 + w2 * p2) / (w1 + w2)
+        # print info
+        if verbose:
+            print(f"merge [{s1}, {s2}, {e2}]")
+            print(f"    dist={dist_cost[min_idx].round(5)}, equal={equal_cost[min_idx]}, small={small_cost[min_idx]}")
         # ^^^^^^^^^^^^^^^^^^^
         # update chart and lists
         chart[s1, e2] = new_p
@@ -448,17 +464,17 @@ fig.tight_layout()
 # In[18]:
 
 
-fig, ax = plt.subplots(1, 1, figsize=(10, 10))
 # sample on fixed grid
 n_samples = 100
-scape = sample_scape(n_samples, scape_JSB)
+scape = sample_scape(n_samples, scape_JSB, p_normalise=True)
 # perform greedy merges
-chart = greedy_merge(scape.lslice[1])
+chart = greedy_merge(scape.lslice[1], dist=1., equal=0., small=0.05, verbose=False)
 # get binary tree
 tree = binary_tree_from_chart(chart)
 # plot tree on top of pitch scape
-ps.plotting.key_scape_plot(scape=scape_JSB, n_samples=n_samples, ax=ax)
-plot_tree(tree, ax=ax, scale=1/n_samples)
+fig, ax = plt.subplots(1, 1, figsize=(10, 10))
+ps.plotting.key_scape_plot(scape=scape_JSB, n_samples=n_samples, ax=ax, axis_off=False)
+plot_tree(tree, ax=ax, scale=1/n_samples, axis_off=False)
 
 
 # ## Technical Details
