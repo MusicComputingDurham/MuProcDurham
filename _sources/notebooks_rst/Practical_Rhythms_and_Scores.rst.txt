@@ -1,0 +1,19 @@
+Practical: Rhythms and Scores
+=============================
+
+ * `Practical_Rhythms_and_Scores.html <../notebooks_html/Practical_Rhythms_and_Scores.html>`_ (view html)
+ * `Practical_Rhythms_and_Scores.ipynb <../notebooks_ipynb/Practical_Rhythms_and_Scores.ipynb>`_ (notebook)
+ * You can find any additional files (for all notebooks) `here <../assets/index.html>`_ or as a zip file here:
+   `assets.zip <../assets.zip>`_
+
+--------------------
+
+.. only:: html
+
+   .. raw:: html
+
+      <iframe src="../notebooks_html/Practical_Rhythms_and_Scores.html"
+              style="width:100%; height:80vh; border:0;"
+              loading="lazy"
+              referrerpolicy="no-referrer">
+      </iframe>
